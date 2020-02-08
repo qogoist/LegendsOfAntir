@@ -1,0 +1,17 @@
+{
+    "rooms": [
+        {
+            "description": "A blank room. Nothing but white space.",
+            "characters": [],
+            "items": [],
+            "exits": {}
+        }
+    ],
+    "characters": [],
+    "items": [],
+    "dialogueNodes": [],
+    "answers": [],
+    "commands": [],
+    "lowerDifficulty": 8,
+    "higherDifficulty": 12
+}
