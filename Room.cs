@@ -8,12 +8,9 @@ namespace LegendsOfAntir
     {
         [JsonProperty]
         private String description;
-        [JsonProperty]
-        private List<Character> characters;
-        [JsonProperty]
-        private List<Item> items;
-        [JsonProperty]
-        private Dictionary<Direction, Room> exits;
+        public List<Character> characters;
+        public List<Item> items;
+        public Dictionary<Direction, Room> exits;
 
         public Room(){}
 

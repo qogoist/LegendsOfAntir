@@ -13,6 +13,7 @@ namespace LegendsOfAntir
         public List<String> commands;
         public int lowerDifficulty;
         public int higherDifficulty;
+        public List<Character> initiative;
 
         public Game(){}
 

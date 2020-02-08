@@ -5,8 +5,7 @@ namespace LegendsOfAntir
 {
     class Item
     {
-        [JsonProperty]
-        protected String name;
+        public String name;
 
         public Item(){}
 

@@ -7,8 +7,7 @@ namespace LegendsOfAntir
     {
         [JsonProperty]
         private String text;
-        [JsonProperty]
-        private DialogueNode destination;
+        public DialogueNode destination;
 
         public Answer(){}
 

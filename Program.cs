@@ -6,7 +6,7 @@ namespace LegendsOfAntir
 {
     class Program
     {
-        static Game _game;
+        public static Game _game;
 
         static void Main(string[] args)
         {
