@@ -8,6 +8,7 @@ namespace LegendsOfAntir
     class Character
     {
         public String Name;
+        [JsonProperty]
         private String _description;
         public Room CurrentRoom;
         public List<Item> Inventory;
