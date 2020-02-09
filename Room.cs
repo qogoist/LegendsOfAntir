@@ -25,9 +25,16 @@ namespace LegendsOfAntir
             }
 
             Console.WriteLine("And these people: ");
-            foreach (Character character in characters)
+            foreach (Character character in this.characters)
             {
-                character.Show();
+                if (character is NPC)
+                    character.Show();
+            }
+
+            Console.WriteLine("You can go: ");
+            foreach (var exit in this.exits)
+            {
+                Console.WriteLine(exit.Key);
             }
         }
     }

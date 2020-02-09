@@ -1,10 +1,23 @@
 {
     "rooms": [
         {
+            "$id": "1",
             "description": "A blank room. Nothing but white space.",
             "characters": [],
             "items": [],
-            "exits": {}
+            "exits": {
+                "north": {
+                    "$id": "2",
+                    "description": "A blank room. Nothing but white space.",
+                    "characters": [],
+                    "items": [],
+                    "exits": {
+                        "south": {
+                            "$ref": "1"
+                        }
+                    }
+                }
+            }
         }
     ],
     "characters": [],
@@ -13,5 +26,11 @@
     "answers": [],
     "commands": [],
     "lowerDifficulty": 8,
-    "higherDifficulty": 12
+    "higherDifficulty": 12,
+    "initiative": [],
+    "player": {
+        "currentRoom": {
+            "$ref": "2"
+        }
+    }
 }

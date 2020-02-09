@@ -19,8 +19,7 @@ namespace LegendsOfAntir
                 running = GetChoice();
             }
 
-            Console.Write("");
-            _game.rooms[0].Show();
+            _game.GameLoop();
 
         }
 
@@ -60,7 +59,7 @@ namespace LegendsOfAntir
         static Game LoadGameFile()
         {
             string jsonString = File.ReadAllText("Ressources\\game.json");
-            Game game = JsonConvert.DeserializeObject<Game>(jsonString);
+            Game game = JsonConvert.DeserializeObject<Game>(jsonString, new JsonSerializerSettings {PreserveReferencesHandling = PreserveReferencesHandling.All});
             return game;
         }
 

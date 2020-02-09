@@ -6,6 +6,8 @@ namespace LegendsOfAntir
 {
     class Player : Character
     {
+        public Player(){}
+
         public override void Move(Direction direction)
         {
             Console.WriteLine("You are going to the " + direction + ".");
@@ -13,7 +15,7 @@ namespace LegendsOfAntir
 
             foreach (NPC npc in _game.characters)
             {
-                Direction npcDirection = Direction.North;
+                Direction npcDirection = Direction.north;
                 if (npc.home == null)
                 {
                     Random random = new Random();
@@ -85,7 +87,6 @@ namespace LegendsOfAntir
             }
 
         }
-
 
         public void Flee()
         {

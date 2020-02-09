@@ -4,9 +4,9 @@ namespace LegendsOfAntir
 {
     public enum Direction
     {
-        North,
-        East,
-        South,
-        West
+        north,
+        east,
+        south,
+        west
     }
 }

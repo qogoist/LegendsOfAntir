@@ -91,6 +91,7 @@ namespace LegendsOfAntir
                 case NPC n:
                     NPC npcTarget = (NPC)target;
                     npcTarget.status = CharacterStatus.Dead;
+                    npcTarget.DropAllItems();
 
                     Console.WriteLine(npcTarget.name + " died.");
                     break;
