@@ -7,26 +7,26 @@ namespace LegendsOfAntir
 {
     class Character
     {
-        public String name;
-        public String description;
-        public Room currentRoom;
-        public List<Item> inventory;
-        public int hp;
-        public Dictionary<Attribute, int> attributes;
-        public Weapon weapon;
-        public Armor armor;
+        public String Name;
+        private String _description;
+        public Room CurrentRoom;
+        public List<Item> Inventory;
+        public int Hp;
+        public Dictionary<Attribute, int> Attributes;
+        public Weapon Weapon;
+        public Armor Armor;
 
 
         public Character() { }
 
         public void Show()
         {
-            Console.WriteLine(name + ": " + description);
+            Console.WriteLine(Name + ": " + _description);
         }
 
         public virtual void Move(Direction direction)
         {
-            Room destination = this.currentRoom.exits[direction];
+            Room destination = this.CurrentRoom.Exits[direction];
 
             if (destination == null)
             {
@@ -34,9 +34,9 @@ namespace LegendsOfAntir
                 return;
             }
 
-            this.currentRoom.characters.Remove(this);
-            this.currentRoom = destination;
-            destination.characters.Add(this);
+            this.CurrentRoom.Characters.Remove(this);
+            this.CurrentRoom = destination;
+            destination.Characters.Add(this);
 
         }
 
@@ -45,25 +45,25 @@ namespace LegendsOfAntir
             int attributeNum;
             int damage;
 
-            if (this.weapon == null)
+            if (this.Weapon == null)
             {
-                attributeNum = this.attributes[Attribute.Brawn];
+                attributeNum = this.Attributes[Attribute.Brawn];
                 damage = 0;
             }
             else
             {
-                attributeNum = this.attributes[this.weapon.attribute];
-                damage = this.weapon.damage;
+                attributeNum = this.Attributes[this.Weapon.UsedAttribute];
+                damage = this.Weapon.Damage;
             }
 
             int result = SkillCheck(attributeNum);
 
-            if (result < _game.lowerDifficulty)
+            if (result < Program.Game.LowerDifficulty)
             {
-                Console.WriteLine(this.name + " missed " + target.name);
+                Console.WriteLine(this.Name + " missed " + target.Name);
                 return;
             }
-            else if (result > _game.higherDifficulty)
+            else if (result > Program.Game.HigherDifficulty)
             {
                 damage += attributeNum;
             }
@@ -73,57 +73,57 @@ namespace LegendsOfAntir
             }
 
             int armor = 0;
-            if (target.armor != null)
-                armor = target.armor.protection;
+            if (target.Armor != null)
+                armor = target.Armor.Protection;
 
             damage -= armor;
-            target.hp -= damage;
+            target.Hp -= damage;
 
-            Console.WriteLine(this.name + " hit " + target.name + " and dealt " + damage + " damage.");
+            Console.WriteLine(this.Name + " hit " + target.Name + " and dealt " + damage + " damage.");
 
-            if (target.hp > 0)
+            if (target.Hp > 0)
                 return;
 
             switch (target)
             {
                 case Player p:
-                    _game.player.TriggerDeath();
+                    Program.Game.Player.TriggerDeath();
                     break;
 
-                case NPC n:
-                    NPC npcTarget = (NPC)target;
-                    npcTarget.status = CharacterStatus.Dead;
+                case Npc n:
+                    Npc npcTarget = (Npc)target;
+                    npcTarget.Status = CharacterStatus.Dead;
                     npcTarget.DropAllItems();
 
-                    Console.WriteLine(npcTarget.name + " died.");
+                    Console.WriteLine(npcTarget.Name + " died.");
 
-                    _game.characters.Remove(npcTarget);
-                    npcTarget.currentRoom.characters.Remove(npcTarget);
+                    Program.Game.Characters.Remove(npcTarget);
+                    npcTarget.CurrentRoom.Characters.Remove(npcTarget);
                     break;
             }
         }
 
         public bool Flee()
         {
-            int mod = this.attributes[Attribute.Smarts];
+            int mod = this.Attributes[Attribute.Smarts];
             int result = SkillCheck(mod);
 
-            if (result < _game.lowerDifficulty)
+            if (result < Program.Game.LowerDifficulty)
             {
-                Console.WriteLine(this.name + " fails to flee.");
+                Console.WriteLine(this.Name + " fails to flee.");
                 return false;
             }
-            else if (result < _game.higherDifficulty && result > _game.lowerDifficulty)
+            else if (result < Program.Game.HigherDifficulty && result > Program.Game.LowerDifficulty)
             {
-                NPC attacker = null;
+                Npc attacker = null;
 
-                foreach (var entry in _game.initiative)
+                foreach (var entry in Program.Game.Initiative)
                 {
-                    if (entry.Key is NPC)
+                    if (entry.Key is Npc)
                     {
-                        NPC npc = (NPC)entry.Key;
+                        Npc npc = (Npc)entry.Key;
 
-                        if (npc.status == CharacterStatus.Hostile)
+                        if (npc.Status == CharacterStatus.Hostile)
                         {
                             attacker = npc;
                             break;
@@ -131,7 +131,7 @@ namespace LegendsOfAntir
                     }
                 }
 
-                Console.WriteLine(this.name + " attempts to flee, but " + attacker.name + " manages to hit them first.");
+                Console.WriteLine(this.Name + " attempts to flee, but " + attacker.Name + " manages to hit them first.");
                 attacker.Attack(this);
             }
 
@@ -139,10 +139,10 @@ namespace LegendsOfAntir
             Direction direction;
             do
             {
-                direction = (Direction)random.Next(0, this.currentRoom.exits.Count);
-            } while (!this.currentRoom.exits.ContainsKey(direction));
+                direction = (Direction)random.Next(0, this.CurrentRoom.Exits.Count);
+            } while (!this.CurrentRoom.Exits.ContainsKey(direction));
 
-            Console.WriteLine(this.name + " manages to flee to the " + direction);
+            Console.WriteLine(this.Name + " manages to flee to the " + direction);
 
             this.Move(direction);
 
@@ -152,7 +152,7 @@ namespace LegendsOfAntir
         public void ShowInventory()
         {
             Console.WriteLine("You have the following items in your inventory: ");
-            foreach (Item item in this.inventory)
+            foreach (Item item in this.Inventory)
             {
                 item.Show();
             }
@@ -168,15 +168,15 @@ namespace LegendsOfAntir
                 return;
             }
 
-            this.inventory.Remove(dropItem);
+            this.Inventory.Remove(dropItem);
 
-            if (dropItem.Equals(this.weapon))
-                this.weapon = null;
-            if (dropItem.Equals(this.armor))
-                this.armor = null;
+            if (dropItem.Equals(this.Weapon))
+                this.Weapon = null;
+            if (dropItem.Equals(this.Armor))
+                this.Armor = null;
 
-            this.currentRoom.items.Add(dropItem);
-            Console.WriteLine(this.name + " dropped " + name);
+            this.CurrentRoom.Items.Add(dropItem);
+            Console.WriteLine(this.Name + " dropped " + name);
 
         }
 
@@ -184,9 +184,9 @@ namespace LegendsOfAntir
         {
             Item pickItem = null;
             
-            foreach (Item item in this.currentRoom.items)
+            foreach (Item item in this.CurrentRoom.Items)
             {
-                if (item.name.Equals(name))
+                if (item.Name.Equals(name))
                     pickItem = item;
             }
 
@@ -196,9 +196,9 @@ namespace LegendsOfAntir
                 return;
             }
 
-            this.currentRoom.items.Remove(pickItem);
-            this.inventory.Add(pickItem);
-            Console.WriteLine(this.name + " took " + name);
+            this.CurrentRoom.Items.Remove(pickItem);
+            this.Inventory.Add(pickItem);
+            Console.WriteLine(this.Name + " took " + name);
         }
 
         public void UseItem(String name)
@@ -216,13 +216,13 @@ namespace LegendsOfAntir
             switch (useItem)
             {
                 case Armor a:
-                    this.armor = (Armor)useItem;
-                    Console.WriteLine("You are now wearing " + this.armor.name + ".");
+                    this.Armor = (Armor)useItem;
+                    Console.WriteLine("You are now wearing " + this.Armor.Name + ".");
                     break;
 
                 case Weapon w:
-                    this.weapon = (Weapon)useItem;
-                    Console.WriteLine("You are now using " + this.weapon.name + " in fights.");
+                    this.Weapon = (Weapon)useItem;
+                    Console.WriteLine("You are now using " + this.Weapon.Name + " in fights.");
                     break;
 
                 default:
@@ -245,17 +245,17 @@ namespace LegendsOfAntir
                 return;
             }
 
-            this.inventory.Remove(giveItem);
-            character.inventory.Add(giveItem);
-            Console.WriteLine(this.name + " has given " + giveItem.name + " to " + character.name + ".");
+            this.Inventory.Remove(giveItem);
+            character.Inventory.Add(giveItem);
+            Console.WriteLine(this.Name + " has given " + giveItem.Name + " to " + character.Name + ".");
 
         }
 
         public void DropAllItems()
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < Inventory.Count; i++)
             {
-                DropItem(inventory[i].name);
+                DropItem(Inventory[i].Name);
             }
         }
 
@@ -273,9 +273,9 @@ namespace LegendsOfAntir
         {
             Item returnItem = null;
 
-            foreach (Item item in this.inventory)
+            foreach (Item item in this.Inventory)
             {
-                if (item.name.Equals(name))
+                if (item.Name.Equals(name))
                     returnItem = item;
             }
 

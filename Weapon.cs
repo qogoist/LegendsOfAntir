@@ -4,15 +4,15 @@ namespace LegendsOfAntir
 {
     class Weapon : Item
     {
-        public int damage;
-        public Attribute attribute;
+        public int Damage;
+        public Attribute UsedAttribute;
 
         public Weapon(){}
 
         override public void Show()
         {
             Console.Write("a ");
-            Console.WriteLine(name + ": " + "+" + damage + " damage.");
+            Console.WriteLine(Name + ": " + "+" + Damage + " damage.");
         }
     }
 }

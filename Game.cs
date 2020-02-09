@@ -6,16 +6,16 @@ namespace LegendsOfAntir
 {
     class Game
     {
-        public List<Item> items;
-        public Player player;
-        public List<Room> rooms;
-        public List<Character> characters;
-        public List<DialogueNode> dialogueNodes;
-        public int lowerDifficulty;
-        public int higherDifficulty;
-        public Dictionary<Character, int> initiative;
+        public List<Item> Items;
+        public Player Player;
+        public List<Room> Rooms;
+        public List<Character> Characters;
+        public List<DialogueNode> DialogueNodes;
+        public int LowerDifficulty;
+        public int HigherDifficulty;
+        public Dictionary<Character, int> Initiative;
 
-        public bool stop;
+        public bool Stop;
 
         public Game() { }
 
@@ -26,11 +26,11 @@ namespace LegendsOfAntir
             {
                 if (moved)
                 {
-                    Room currentRoom = player.currentRoom;
+                    Room currentRoom = Player.CurrentRoom;
                     currentRoom.Show();
                 }
                 moved = this.GetPlayerCommand();
-            } while (!stop);
+            } while (!Stop);
         }
 
         public void ShowCommands()
@@ -50,12 +50,12 @@ namespace LegendsOfAntir
 
         public bool CheckForHostiles()
         {
-            foreach (var entry in initiative)
+            foreach (var entry in Initiative)
             {
-                if (entry.Key is NPC)
+                if (entry.Key is Npc)
                 {
-                    NPC npc = (NPC)entry.Key;
-                    if (npc.status == CharacterStatus.Hostile)
+                    Npc npc = (Npc)entry.Key;
+                    if (npc.Status == CharacterStatus.Hostile)
                         return true;
                 }
             }
@@ -65,17 +65,17 @@ namespace LegendsOfAntir
 
         public void Fight()
         {
-            foreach (Character character in player.currentRoom.characters)
+            foreach (Character character in Player.CurrentRoom.Characters)
             {
-                int result = character.SkillCheck(character.attributes[Attribute.Agility]);
-                initiative.Add(character, result);
+                int result = character.SkillCheck(character.Attributes[Attribute.Agility]);
+                Initiative.Add(character, result);
             }
 
             bool fighting = true;
 
-            while (fighting && !stop)
+            while (fighting && !Stop)
             {
-                foreach (var entry in initiative.OrderByDescending(x => x.Value))
+                foreach (var entry in Initiative.OrderByDescending(x => x.Value))
                 {
                     var character = entry.Key;
 
@@ -90,7 +90,7 @@ namespace LegendsOfAntir
                     }
                     else
                     {
-                        NPCTurn((NPC)character);
+                        NPCTurn((Npc)character);
                     }
 
                     bool enemyRemaining = CheckForHostiles();
@@ -103,7 +103,7 @@ namespace LegendsOfAntir
             }
 
             Console.WriteLine("The fight is over.");
-            initiative.Clear();
+            Initiative.Clear();
 
         }
 
@@ -130,19 +130,19 @@ namespace LegendsOfAntir
                     {
                         case "1":
                         case "attack":
-                            NPC target = null;
-                            foreach (var entry in initiative)
+                            Npc target = null;
+                            foreach (var entry in Initiative)
                             {
-                                if (entry.Key.name.ToLower().Equals(option))
-                                    target = (NPC)entry.Key;
+                                if (entry.Key.Name.ToLower().Equals(option))
+                                    target = (Npc)entry.Key;
                             }
-                            player.Attack(target);
+                            Player.Attack(target);
                             choosing = false;
                             break;
 
                         case "2":
                         case "flee":
-                            if (player.Flee())
+                            if (Player.Flee())
                                 return true;
                             choosing = false;
                             break;
@@ -162,21 +162,21 @@ namespace LegendsOfAntir
             return false;
         }
 
-        public void NPCTurn(NPC npc)
+        public void NPCTurn(Npc npc)
         {
-            switch (npc.status)
+            switch (npc.Status)
             {
                 case CharacterStatus.Dead:
-                    initiative.Remove(npc);
+                    Initiative.Remove(npc);
                     break;
 
                 case CharacterStatus.Ally:
-                    foreach (var pair in initiative)
+                    foreach (var pair in Initiative)
                     {
-                        if (pair.Key is NPC)
+                        if (pair.Key is Npc)
                         {
-                            NPC target = (NPC)pair.Key;
-                            if (target.status == CharacterStatus.Hostile)
+                            Npc target = (Npc)pair.Key;
+                            if (target.Status == CharacterStatus.Hostile)
                             {
                                 npc.Attack(target);
                                 break;
@@ -190,7 +190,7 @@ namespace LegendsOfAntir
                     break;
 
                 case CharacterStatus.Hostile:
-                    npc.Attack(player);
+                    npc.Attack(Player);
                     break;
             }
         }
@@ -212,7 +212,7 @@ namespace LegendsOfAntir
                 {
                     case "talk":
                     case "a":
-                        player.Dialogue(option);
+                        Player.Dialogue(option);
                         break;
 
                     case "fight":
@@ -226,33 +226,33 @@ namespace LegendsOfAntir
 
                     case "move":
                     case "m":
-                        player.Move((Direction)Enum.Parse(typeof(Direction), option, true));
+                        Player.Move((Direction)Enum.Parse(typeof(Direction), option, true));
                         return true;
 
                     case "quit":
                     case "q":
                         Program.SaveGameFIle();
-                        stop = true;
+                        Stop = true;
                         break;
 
                     case "take":
                     case "t":
-                        player.TakeItem(option);
+                        Player.TakeItem(option);
                         break;
 
                     case "drop":
                     case "d":
-                        player.DropItem(option);
+                        Player.DropItem(option);
                         break;
 
                     case "use":
                     case "u":
-                        player.UseItem(option);
+                        Player.UseItem(option);
                         break;
 
                     case "inventory":
                     case "i":
-                        player.ShowInventory();
+                        Player.ShowInventory();
                         break;
 
                     case "commands":
@@ -279,12 +279,12 @@ namespace LegendsOfAntir
         {
             Console.WriteLine("You died.");
             Console.WriteLine("Game Over.");
-            stop = true;
+            Stop = true;
         }
 
         public void AddDeathListener()
         {
-            this.player.deathEvent += OnDeathEvent;
+            this.Player.deathEvent += OnDeathEvent;
         }
     }
 }

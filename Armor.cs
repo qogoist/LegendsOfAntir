@@ -4,14 +4,14 @@ namespace LegendsOfAntir
 {
     class Armor : Item
     {
-        public int protection;
+        public int Protection;
 
         public Armor(){}
 
         override public void Show()
         {
             Console.Write("a ");
-            Console.WriteLine(name + ": " + protection + " protection.");
+            Console.WriteLine(Name + ": " + Protection + " protection.");
         }
     }
 }

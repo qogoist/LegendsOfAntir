@@ -8,38 +8,38 @@ namespace LegendsOfAntir
     class DialogueNode
     {
         [JsonProperty]
-        private String text;
-        public List<Answer> answers;
+        private String _text;
+        public List<Answer> Answers;
         [JsonProperty]
-        private bool give;
+        private bool _give;
         [JsonProperty]
-        private string[] items;
+        private string[] _items;
         [JsonProperty]
-        private string character;
+        private string _character;
 
         public DialogueNode(){}
 
         public void Show()
         {
-           Console.WriteLine(text);
+           Console.WriteLine(_text);
 
-           if (give)
+           if (_give)
            {
-               NPC giver = null;
-               foreach (Character npc in _game.player.currentRoom.characters)
+               Npc giver = null;
+               foreach (Character npc in Program.Game.Player.CurrentRoom.Characters)
                {
-                    if (npc.name.Equals(this.character))
-                        giver = (NPC)npc;
+                    if (npc.Name.Equals(this._character))
+                        giver = (Npc)npc;
                }
 
-               foreach(string item in items)
+               foreach(string item in _items)
                {
-                   giver.GiveItem(_game.player, item);
+                   giver.GiveItem(Program.Game.Player, item);
                }
            }
 
            int i = 1;
-           foreach(Answer answer in answers)
+           foreach(Answer answer in Answers)
            {
                Console.Write(i + ": ");
                answer.Show();

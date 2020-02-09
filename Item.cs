@@ -5,14 +5,14 @@ namespace LegendsOfAntir
 {
     class Item
     {
-        public String name;
+        public String Name;
 
         public Item(){}
 
         virtual public void Show()
         {
             Console.Write("a ");
-            Console.WriteLine(name);
+            Console.WriteLine(Name);
         }
     }
 }

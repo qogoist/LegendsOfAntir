@@ -2,11 +2,11 @@ using System;
 
 namespace LegendsOfAntir
 {
-    class NPC : Character
+    class Npc : Character
     {
-        public NPC(){}
-        public DialogueNode dialogue;
-        public CharacterStatus status;
-        public Room home;
+        public Npc(){}
+        public DialogueNode Dialogue;
+        public CharacterStatus Status;
+        public Room Home;
     }
 }

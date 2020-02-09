@@ -16,24 +16,24 @@ namespace LegendsOfAntir
             Console.WriteLine("You are going to the " + direction + ".");
             base.Move(direction);
 
-            foreach (NPC npc in _game.characters)
+            foreach (Npc npc in Program.Game.Characters)
             {
                 Direction npcDirection = Direction.North;
-                if (npc.home == null)
+                if (npc.Home == null)
                 {
                     Random random = new Random();
                     do
                     {
                         npcDirection = (Direction)random.Next(0, 4);
-                    } while (!npc.currentRoom.exits.ContainsKey(npcDirection));
+                    } while (!npc.CurrentRoom.Exits.ContainsKey(npcDirection));
 
                     npc.Move(npcDirection);
                 }
-                else if (!npc.home.Equals(npc.currentRoom))
+                else if (!npc.Home.Equals(npc.CurrentRoom))
                 {
-                    foreach (var exit in npc.currentRoom.exits)
+                    foreach (var exit in npc.CurrentRoom.Exits)
                     {
-                        if (exit.Value.Equals(npc.home))
+                        if (exit.Value.Equals(npc.Home))
                             npcDirection = exit.Key;
                     }
                     npc.Move(npcDirection);
@@ -43,12 +43,12 @@ namespace LegendsOfAntir
 
         public void Dialogue(string npc)
         {
-            NPC character = null;
+            Npc character = null;
 
-            foreach (Character chara in this.currentRoom.characters)
+            foreach (Character chara in this.CurrentRoom.Characters)
             {
-                if (chara.name.ToLower().Equals(npc))
-                    character = (NPC)chara;
+                if (chara.Name.ToLower().Equals(npc))
+                    character = (Npc)chara;
             }
 
             if (character == null)
@@ -57,14 +57,14 @@ namespace LegendsOfAntir
                 return;
             }
 
-            if (character.status == CharacterStatus.Hostile)
+            if (character.Status == CharacterStatus.Hostile)
             {
-                Console.WriteLine(character.name + " doesn't want to talk. They want to fight.");
-                _game.Fight();
+                Console.WriteLine(character.Name + " doesn't want to talk. They want to fight.");
+                Program.Game.Fight();
                 return;
             }
 
-            DialogueNode dialogue = character.dialogue;
+            DialogueNode dialogue = character.Dialogue;
             while (dialogue != null)
             {
                 dialogue.Show();
@@ -76,16 +76,16 @@ namespace LegendsOfAntir
                     Console.Write("> ");
                     int input = Int32.Parse(Console.ReadLine());
 
-                    for (int i = 0; i < dialogue.answers.Count; i++)
+                    for (int i = 0; i < dialogue.Answers.Count; i++)
                     {
                         if (i + 1 == input)
                         {
-                            answer = dialogue.answers[i];
+                            answer = dialogue.Answers[i];
                             break;
                         }
                     }
 
-                    dialogue = answer.destination;
+                    dialogue = answer.Destination;
                 }
                 catch (System.Exception)
                 {

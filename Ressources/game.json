@@ -68,7 +68,7 @@
     "$id": "1",
     "$type": "LegendsOfAntir.Player, LegendsOfAntir",
     "name": null,
-    "description": null,
+    "_description": null,
     "currentRoom": null,
     "inventory": [],
     "hp": 0,
@@ -79,52 +79,52 @@
   "dialogueNodes": [
     {
       "$id": "2000",
-      "text": " 'Hello my dear' the Old Lady greets you, stumbling slightly away from the tree and in your direction. 'Where to? Where to?'",
+      "_text": " 'Hello my dear' the Old Lady greets you, stumbling slightly away from the tree and in your direction. 'Where to? Where to?'",
       "answers": [
         {
-          "text": "Looking for adventure.",
+          "_text": "Looking for adventure.",
           "destination": {
             "$id": "2001",
-            "text": "'Adventure you say?' The Old Lady cackles. 'Well there is adventure to be found in the east. If you are not afraid of the undead.",
+            "_text": "'Adventure you say?' The Old Lady cackles. 'Well there is adventure to be found in the east. If you are not afraid of the undead.",
             "answers": [
               {
-                "text": "Thanks.",
+                "_text": "Thanks.",
                 "destination": null
               }
             ]
           }
         },
         {
-          "text": "I don't know where I am.",
+          "_text": "I don't know where I am.",
           "destination": {
             "$id": "2002",
-            "text": "'Ohhh... well you are in the forrest my dear.' The Old Lady laughs quietly.",
+            "_text": "'Ohhh... well you are in the forrest my dear.' The Old Lady laughs quietly.",
             "answers": [
               {
-                "text": "Thanks.",
+                "_text": "Thanks.",
                 "destination": null
               },
               {
-                "text": "Where is the nearest town.",
+                "_text": "Where is the nearest town.",
                 "destination": {
                   "$id": "2003",
-                  "text": "'It is right over there, my dear.' The Old Lady points over her shoulder towards the North. 'But it is barely more than a village.",
+                  "_text": "'It is right over there, my dear.' The Old Lady points over her shoulder towards the North. 'But it is barely more than a village.",
                   "answers": [
                     {
-                      "text": "Thanks.",
+                      "_text": "Thanks.",
                       "destination": null
                     }
                   ]
                 }
               },
               {
-                "text": "What sort of forest?",
+                "_text": "What sort of forest?",
                 "destination": {
                   "$id": "2004",
-                  "text": "'An old one. A haunted one. If I were you I wouldn't go near the shrine to the east. Many have gone there that have never come back.' She lookes over her shoulder, suddenly very nervours. 'But I have already said enough.'",
+                  "_text": "'An old one. A haunted one. If I were you I wouldn't go near the shrine to the east. Many have gone there that have never come back.' She lookes over her shoulder, suddenly very nervours. 'But I have already said enough.'",
                   "answers": [
                     {
-                      "text": "Thanks.",
+                      "_text": "Thanks.",
                       "destination": null
                     }
                   ]
@@ -137,58 +137,58 @@
     },
     {
       "$id": "2005",
-      "text": "'Hey there.' The Farmer greets you, looking at you with distrust. 'We don't get many travellers here.'",
+      "_text": "'Hey there.' The Farmer greets you, looking at you with distrust. 'We don't get many travellers here.'",
       "answers": [
         {
-          "text": "Bye.",
+          "_text": "Bye.",
           "destination": null
         },
         {
-          "text": "Not looking for trouble.",
+          "_text": "Not looking for trouble.",
           "destination": {
             "$id": "2006",
-            "text": "'You'd better not be.' The Farmer utters under his breath. 'If you're not looking for trouble, what brings you here, then?'",
+            "_text": "'You'd better not be.' The Farmer utters under his breath. 'If you're not looking for trouble, what brings you here, then?'",
             "answers": [
               {
-                "text": "Got lost in the woods.",
+                "_text": "Got lost in the woods.",
                 "destination": {
                   "$id": "2007",
-                  "text": "'Lost in the woods, eyh?' He shakes his head. 'Well you definitely look the part. Take my advise and keep away from the plains. It'S not safe there.'",
+                  "_text": "'Lost in the woods, eyh?' He shakes his head. 'Well you definitely look the part. Take my advise and keep away from the plains. It'S not safe there.'",
                   "answers": [
                     {
-                      "text": "Thanks, bye.",
+                      "_text": "Thanks, bye.",
                       "destination": null
                     }
                   ]
                 }
               },
               {
-                "text": "Looking for work.",
+                "_text": "Looking for work.",
                 "destination": {
                   "$id": "2008",
-                  "text": "'Aren't we all?' He takes a look at you. 'Don't look like much of a farmhand to me. So what can you do?'",
+                  "_text": "'Aren't we all?' He takes a look at you. 'Don't look like much of a farmhand to me. So what can you do?'",
                   "answers": [
                     {
-                      "text": "Killing.",
+                      "_text": "Killing.",
                       "destination": {
                         "$id": "2009",
-                        "text": "'A mercenary...' He huffs quietly. 'Look for the Major. I think we might have work for your kind.'",
+                        "_text": "'A mercenary...' He huffs quietly. 'Look for the Major. I think we might have work for your kind.'",
                         "answers": [
                           {
-                            "text": "Thanks. Will do.",
+                            "_text": "Thanks. Will do.",
                             "destination": null
                           }
                         ]
                       }
                     },
                     {
-                      "text": "Am a merchant.",
+                      "_text": "Am a merchant.",
                       "destination": {
                         "$id": "2010",
-                        "text": "'Well good luck then. Village is not exactly rich.' He says before he turns to resume his work.",
+                        "_text": "'Well good luck then. Village is not exactly rich.' He says before he turns to resume his work.",
                         "answers": [
                           {
-                            "text": "Bye.",
+                            "_text": "Bye.",
                             "destination": null
                           }
                         ]
@@ -204,57 +204,57 @@
     },
     {
       "$id": "2011",
-      "text": "The woman turns to you as you approach. 'An outsider? In our village? It must be the end of times.'",
+      "_text": "The woman turns to you as you approach. 'An outsider? In our village? It must be the end of times.'",
       "answers": [
         {
-          "text": "Nah, just coincidence",
+          "_text": "Nah, just coincidence",
           "destination": {
             "$id": "2012",
-            "text": "She nods. 'The more likely option. Though I have certainly seen enough that says otherwise.'",
+            "_text": "She nods. 'The more likely option. Though I have certainly seen enough that says otherwise.'",
             "answers": [
               {
                 "$id": "3000",
-                "text": "What's going on?",
+                "_text": "What's going on?",
                 "destination": {
                   "$id": "2014",
-                  "text": "She looks at you for a moment before she nods. 'You look like you could hold yourself in a fight. Perhaps you could help.'",
+                  "_text": "She looks at you for a moment before she nods. 'You look like you could hold yourself in a fight. Perhaps you could help.'",
                   "answers": [
                     {
-                      "text": "Not really.",
+                      "_text": "Not really.",
                       "destination": {
                         "$id": "2016",
-                        "text": "'A shame. She utters before she lets you go.",
+                        "_text": "'A shame. She utters before she lets you go.",
                         "answers": [
                           {
-                            "text": "Bye.",
+                            "_text": "Bye.",
                             "destination": null
                           },
                           {
-                            "text": "On a second thought.",
+                            "_text": "On a second thought.",
                             "destination": {
                               "$id": "2017",
-                              "text": "'There is a band of orcs in the plains, threatening to raid our little village. If you could help use, perhaps things could finally get better. And they are bound to have some loot.'",
+                              "_text": "'There is a band of orcs in the plains, threatening to raid our little village. If you could help use, perhaps things could finally get better. And they are bound to have some loot.'",
                               "answers": [
                                 {
-                                  "text": "Sure. I'll take care of them.",
+                                  "_text": "Sure. I'll take care of them.",
                                   "destination": null
                                 },
                                 {
-                                  "text": "Gonna need some weapons.",
+                                  "_text": "Gonna need some weapons.",
                                   "destination": {
                                     "$id": "2018",
-                                    "text": "She sighs. 'I can give you my spare sword. But I hope you won't do anything stupid with it.'",
+                                    "_text": "She sighs. 'I can give you my spare sword. But I hope you won't do anything stupid with it.'",
                                     "answers": [
                                       {
-                                        "text": "Thanks. I'll take care of them.",
+                                        "_text": "Thanks. I'll take care of them.",
                                         "destination": null
                                       }
                                     ],
-                                    "give": true,
-                                    "items": [
+                                    "_give": true,
+                                    "_items": [
                                       "sword"
                                     ],
-                                    "character": "Major"
+                                    "_character": "Major"
                                   }
                                 }
                               ]
@@ -264,7 +264,7 @@
                       }
                     },
                     {
-                      "text": "Sure.",
+                      "_text": "Sure.",
                       "destination": {
                         "$ref": "2017"
                       }
@@ -274,17 +274,17 @@
               },
               {
                 "$id": "3001",
-                "text": "Dont care.",
+                "_text": "Dont care.",
                 "destination": null
               }
             ]
           }
         },
         {
-          "text": "Perhaps.",
+          "_text": "Perhaps.",
           "destination": {
             "$id": "2013",
-            "text": "She sighs quietly. 'You have no idea how right you are.'",
+            "_text": "She sighs quietly. 'You have no idea how right you are.'",
             "answers": [
               {
                 "$ref": "3000"
@@ -301,7 +301,7 @@
   "rooms": [
     {
       "$id": "10",
-      "description": "You find yourself in the remainders of an abandoned campsite. Your so called companions have long left.",
+      "_description": "You find yourself in the remainders of an abandoned campsite. Your so called companions have long left.",
       "characters": [
         {
           "$ref": "1"
@@ -315,13 +315,13 @@
       "exits": {
         "north": {
           "$id": "11",
-          "description": "You enter the forrest, following the narrow path. After a while you come to a halt at a crossroads.",
+          "_description": "You enter the forrest, following the narrow path. After a while you come to a halt at a crossroads.",
           "characters": [
             {
               "$id": "103",
-              "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+              "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
               "name": "Old Lady",
-              "description": "A slightly crazed looking old lady, carrrying a basket filled with mushrooms. She leans heavily against a tree.",
+              "_description": "A slightly crazed looking old lady, carrrying a basket filled with mushrooms. She leans heavily against a tree.",
               "currentRoom": {
                 "$ref": "11"
               },
@@ -347,13 +347,13 @@
           "exits": {
             "north": {
               "$id": "12",
-              "description": "You enter a small village. A few children that were playing in the street quickly scurry away as you arrive.",
+              "_description": "You enter a small village. A few children that were playing in the street quickly scurry away as you arrive.",
               "characters": [
                 {
                   "$id": "102",
-                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                   "name": "Farmer",
-                  "description": "An older man, tanned and muscular from the work on the fields.",
+                  "_description": "An older man, tanned and muscular from the work on the fields.",
                   "currentRoom": {
                     "$ref": "12"
                   },
@@ -376,9 +376,9 @@
                 },
                 {
                   "$id": "105",
-                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                   "name": "Major",
-                  "description": "A stern looking woman wearing pieces of armor.",
+                  "_description": "A stern looking woman wearing pieces of armor.",
                   "currentRoom": {
                     "$ref": "12"
                   },
@@ -415,9 +415,9 @@
                 },
                 {
                   "$id": "101",
-                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                   "name": "Wolf",
-                  "description": "A fluffy little wolf.",
+                  "_description": "A fluffy little wolf.",
                   "currentRoom": {
                     "$ref": "12"
                   },
@@ -439,13 +439,13 @@
               "exits": {
                 "north": {
                   "$id": "14",
-                  "description": "You enter the plains. Nothing but flat land, as far as you can see.",
+                  "_description": "You enter the plains. Nothing but flat land, as far as you can see.",
                   "characters": [
                     {
                       "$id": "106",
-                      "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                      "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                       "name": "Orc Warrior",
-                      "description": "A brawny lookin orc. His tusks alone are the size of your hand.",
+                      "_description": "A brawny lookin orc. His tusks alone are the size of your hand.",
                       "currentRoom": {
                         "$ref": "14"
                       },
@@ -477,9 +477,9 @@
                     },
                     {
                       "$id": "107",
-                      "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                      "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                       "name": "Orc Archer",
-                      "description": "A slightly smaller orc, wielding a wicked bow.",
+                      "_description": "A slightly smaller orc, wielding a wicked bow.",
                       "currentRoom": {
                         "$ref": "14"
                       },
@@ -514,13 +514,13 @@
                   "exits": {
                     "north": {
                       "$id": "15",
-                      "description": "You spot a small hut in the plains. You are not sure how you have not seen it earlier. It stands slightly askew, doubtlessly a product of the everpresent winds.",
+                      "_description": "You spot a small hut in the plains. You are not sure how you have not seen it earlier. It stands slightly askew, doubtlessly a product of the everpresent winds.",
                       "characters": [
                         {
                           "$id": "108",
-                          "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                          "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                           "name": "Magus",
-                          "description": "A tall old man withan impressive beard.",
+                          "_description": "A tall old man withan impressive beard.",
                           "currentRoom": {
                             "$ref": "15"
                           },
@@ -590,13 +590,13 @@
             },
             "east": {
               "$id": "13",
-              "description": "After a while of walking you find your way to the remnants of a long abandoned shrine. It reeks of death and decay.",
+              "_description": "After a while of walking you find your way to the remnants of a long abandoned shrine. It reeks of death and decay.",
               "characters": [
                 {
                   "$id": "100",
-                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                   "name": "Skelleton",
-                  "description": "The skelleton of a human. It's bones rattle with every step.",
+                  "_description": "The skelleton of a human. It's bones rattle with every step.",
                   "currentRoom": {
                     "$ref": "13"
                   },
@@ -623,9 +623,9 @@
                 },
                 {
                   "$id": "104",
-                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "$type": "LegendsOfAntir.Npc, LegendsOfAntir",
                   "name": "Zombie",
-                  "description": "A Zombie. It reeks of death.",
+                  "_description": "A Zombie. It reeks of death.",
                   "currentRoom": {
                     "$ref": "13"
                   },

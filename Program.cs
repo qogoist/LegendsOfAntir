@@ -8,7 +8,7 @@ namespace LegendsOfAntir
 {
     class Program
     {
-        public static Game _game;
+        public static Game Game;
 
         private static JsonSerializerSettings _jsonSettings = new JsonSerializerSettings()
         {
@@ -26,8 +26,8 @@ namespace LegendsOfAntir
             {
                 ShowMenu();
                 menu = GetChoice();
-                _game.stop = false;
-                _game.GameLoop();
+                Game.Stop = false;
+                Game.GameLoop();
             } while (menu);
         }
 
@@ -55,16 +55,23 @@ namespace LegendsOfAntir
                 switch (input)
                 {
                     case "1":
-                        _game = LoadGameFile("Ressources\\game.json");
+                        Game = LoadGameFile("Ressources\\game.json");
                         CreateCharacter();
-                        _game.AddDeathListener();
+                        Game.AddDeathListener();
                         choosing = false;
                         break;
 
                     case "2":
-                        _game = LoadGameFile("Ressources\\save.json");
-                        _game.AddDeathListener();
-                        choosing = false;
+                        try
+                        {
+                            Game = LoadGameFile("Ressources\\save.json");
+                            Game.AddDeathListener();
+                            choosing = false;
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.WriteLine("No saved game found. Please start a new game.");
+                        }
                         break;
 
                     case "3":
@@ -90,18 +97,12 @@ namespace LegendsOfAntir
             {
                 try
                 {
-                    Player player = _game.player;
+                    Player player = Game.Player;
                     Console.WriteLine("What is your name?");
                     Console.Write("> ");
 
                     string input = Console.ReadLine();
-                    player.name = input;
-
-                    Console.WriteLine("How do you look?");
-                    Console.Write("> ");
-
-                    input = Console.ReadLine();
-                    player.description = input;
+                    player.Name = input;
 
                     Console.WriteLine("Order these attributes by importance, from most important to least.");
                     Console.WriteLine("Agility, Brawn, Smarts");
@@ -115,23 +116,22 @@ namespace LegendsOfAntir
                     Attribute second = (Attribute)Enum.Parse(typeof(Attribute), inputArray[1].Trim(), true);
                     Attribute third = (Attribute)Enum.Parse(typeof(Attribute), inputArray[2].Trim(), true);
 
-                    player.attributes.Add(first, 5);
-                    player.attributes.Add(second, 3);
-                    player.attributes.Add(third, 1);
+                    player.Attributes.Add(first, 5);
+                    player.Attributes.Add(second, 3);
+                    player.Attributes.Add(third, 1);
 
-                    player.hp = player.attributes[Attribute.Brawn] * 5;
+                    player.Hp = player.Attributes[Attribute.Brawn] * 5;
 
-                    foreach (Room room in _game.rooms)
+                    foreach (Room room in Game.Rooms)
                     {
-                        if (room.characters.Contains(player))
-                            player.currentRoom = room;
+                        if (room.Characters.Contains(player))
+                            player.CurrentRoom = room;
                     }
 
                     creating = false;
                 }
-                catch (System.Exception e)
+                catch (System.Exception)
                 {
-                    Console.Write(e);
                     Console.WriteLine("Something went wrong. Please try again.");
                 }
             }
@@ -146,7 +146,7 @@ namespace LegendsOfAntir
 
         public static void SaveGameFIle()
         {
-            string jsonString = JsonConvert.SerializeObject(_game, Formatting.Indented, _jsonSettings);
+            string jsonString = JsonConvert.SerializeObject(Game, Formatting.Indented, _jsonSettings);
             File.WriteAllText("Ressources\\save.json", jsonString);
         }
     }
