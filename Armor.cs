@@ -10,6 +10,7 @@ namespace LegendsOfAntir
 
         override public void Show()
         {
+            Console.Write("a ");
             Console.WriteLine(name + ": " + protection + " protection.");
         }
     }

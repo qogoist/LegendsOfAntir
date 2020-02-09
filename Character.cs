@@ -96,6 +96,9 @@ namespace LegendsOfAntir
                     npcTarget.DropAllItems();
 
                     Console.WriteLine(npcTarget.name + " died.");
+
+                    _game.characters.Remove(npcTarget);
+                    npcTarget.currentRoom.characters.Remove(npcTarget);
                     break;
             }
         }
@@ -133,7 +136,11 @@ namespace LegendsOfAntir
             }
 
             Random random = new Random();
-            Direction direction = (Direction)random.Next(0, this.currentRoom.exits.Count);
+            Direction direction;
+            do
+            {
+                direction = (Direction)random.Next(0, this.currentRoom.exits.Count);
+            } while (!this.currentRoom.exits.ContainsKey(direction));
 
             Console.WriteLine(this.name + " manages to flee to the " + direction);
 
@@ -153,13 +160,7 @@ namespace LegendsOfAntir
 
         public void DropItem(String name)
         {
-            Item dropItem = null;
-
-            foreach (Item item in this.inventory)
-            {
-                if (item.name.Equals(name))
-                    dropItem = item;
-            }
+            Item dropItem = FindItem(name);
 
             if (dropItem == null)
             {
@@ -168,15 +169,21 @@ namespace LegendsOfAntir
             }
 
             this.inventory.Remove(dropItem);
+
+            if (dropItem.Equals(this.weapon))
+                this.weapon = null;
+            if (dropItem.Equals(this.armor))
+                this.armor = null;
+
             this.currentRoom.items.Add(dropItem);
-            Console.WriteLine("You dropped " + name);
+            Console.WriteLine(this.name + " dropped " + name);
 
         }
 
         public void TakeItem(String name)
         {
             Item pickItem = null;
-
+            
             foreach (Item item in this.currentRoom.items)
             {
                 if (item.name.Equals(name))
@@ -191,17 +198,17 @@ namespace LegendsOfAntir
 
             this.currentRoom.items.Remove(pickItem);
             this.inventory.Add(pickItem);
-            Console.WriteLine("You took " + name);
+            Console.WriteLine(this.name + " took " + name);
         }
 
         public void UseItem(String name)
         {
-            Item useItem = null;
+            Item useItem = FindItem(name);
 
-            foreach (Item item in this.inventory)
+            if (useItem == null)
             {
-                if (item.name.Equals(name))
-                    useItem = item;
+                Console.WriteLine("The item you tried to use is not in your inventory.");
+                return;
             }
 
             Type itemType = useItem.GetType();
@@ -210,10 +217,12 @@ namespace LegendsOfAntir
             {
                 case Armor a:
                     this.armor = (Armor)useItem;
+                    Console.WriteLine("You are now wearing " + this.armor.name + ".");
                     break;
 
                 case Weapon w:
                     this.weapon = (Weapon)useItem;
+                    Console.WriteLine("You are now using " + this.weapon.name + " in fights.");
                     break;
 
                 default:
@@ -226,11 +235,27 @@ namespace LegendsOfAntir
             }
         }
 
+        public void GiveItem(Character character, String item)
+        {
+            Item giveItem = FindItem(item);
+
+            if (giveItem == null)
+            {
+                Console.WriteLine("The item you tried to give is not in your inventory.");
+                return;
+            }
+
+            this.inventory.Remove(giveItem);
+            character.inventory.Add(giveItem);
+            Console.WriteLine(this.name + " has given " + giveItem.name + " to " + character.name + ".");
+
+        }
+
         public void DropAllItems()
         {
-            foreach (Item item in inventory)
+            for (int i = 0; i < inventory.Count; i++)
             {
-                this.DropItem(item.name);
+                DropItem(inventory[i].name);
             }
         }
 
@@ -242,6 +267,19 @@ namespace LegendsOfAntir
             result += mod;
 
             return result;
+        }
+
+        private Item FindItem(String name)
+        {
+            Item returnItem = null;
+
+            foreach (Item item in this.inventory)
+            {
+                if (item.name.Equals(name))
+                    returnItem = item;
+            }
+
+            return returnItem;
         }
     }
 }

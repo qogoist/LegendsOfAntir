@@ -11,6 +11,7 @@ namespace LegendsOfAntir
 
         virtual public void Show()
         {
+            Console.Write("a ");
             Console.WriteLine(name);
         }
     }

@@ -21,6 +21,7 @@ namespace LegendsOfAntir
             Console.WriteLine("You spot these items: ");
             foreach (Item item in items)
             {
+                Console.Write("  - ");
                 item.Show();
             }
 
@@ -28,12 +29,16 @@ namespace LegendsOfAntir
             foreach (Character character in this.characters)
             {
                 if (character is NPC)
+                {
+                    Console.Write("  - ");
                     character.Show();
+                }
             }
 
             Console.WriteLine("You can go: ");
             foreach (var exit in this.exits)
             {
+                Console.Write("  - ");
                 Console.WriteLine(exit.Key);
             }
         }

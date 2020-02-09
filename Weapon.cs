@@ -11,6 +11,7 @@ namespace LegendsOfAntir
 
         override public void Show()
         {
+            Console.Write("a ");
             Console.WriteLine(name + ": " + "+" + damage + " damage.");
         }
     }

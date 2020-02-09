@@ -22,7 +22,11 @@ namespace LegendsOfAntir
                 if (npc.home == null)
                 {
                     Random random = new Random();
-                    npcDirection = (Direction)random.Next(0, npc.currentRoom.exits.Count);
+                    do
+                    {
+                        npcDirection = (Direction)random.Next(0, 4);
+                    } while (!npc.currentRoom.exits.ContainsKey(npcDirection));
+
                     npc.Move(npcDirection);
                 }
                 else if (!npc.home.Equals(npc.currentRoom))
@@ -41,10 +45,10 @@ namespace LegendsOfAntir
         {
             NPC character = null;
 
-            foreach (NPC chara in this.currentRoom.characters)
+            foreach (Character chara in this.currentRoom.characters)
             {
-                if (chara.name.Equals(npc))
-                    character = chara;
+                if (chara.name.ToLower().Equals(npc))
+                    character = (NPC)chara;
             }
 
             if (character == null)
@@ -69,11 +73,12 @@ namespace LegendsOfAntir
 
                 try
                 {
-                    int input = Int32.Parse(Console.ReadKey().ToString());
+                    Console.Write("> ");
+                    int input = Int32.Parse(Console.ReadLine());
 
-                    for (int i = 1; i <= dialogue.answers.Count; i++)
+                    for (int i = 0; i < dialogue.answers.Count; i++)
                     {
-                        if (i == input)
+                        if (i + 1 == input)
                         {
                             answer = dialogue.answers[i];
                             break;
@@ -81,7 +86,6 @@ namespace LegendsOfAntir
                     }
 
                     dialogue = answer.destination;
-
                 }
                 catch (System.Exception)
                 {
@@ -90,7 +94,7 @@ namespace LegendsOfAntir
             }
 
         }
-    
+
         public void TriggerDeath()
         {
             deathEvent();

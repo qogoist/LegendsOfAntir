@@ -21,13 +21,14 @@ namespace LegendsOfAntir
         private static void Main(string[] args)
         {
             ShowWelcome();
-            bool running = true;
+            bool menu = true;
             do
             {
                 ShowMenu();
-                running = GetChoice();
+                menu = GetChoice();
+                _game.stop = false;
                 _game.GameLoop();
-            } while (running);
+            } while (menu);
         }
 
         static void ShowMenu()
@@ -68,6 +69,7 @@ namespace LegendsOfAntir
 
                     case "3":
                         Console.Write("Closing the Game.");
+                        Environment.Exit(0);
                         return false;
 
                     default:
@@ -82,48 +84,56 @@ namespace LegendsOfAntir
 
         static void CreateCharacter()
         {
-            try
+            bool creating = true;
+
+            while (creating)
             {
-                Player player = _game.player;
-                Console.WriteLine("What is your name?");
-                Console.Write("> ");
-
-                string input = Console.ReadLine();
-                player.name = input;
-
-                Console.WriteLine("How do you look?");
-                Console.Write("> ");
-
-                input = Console.ReadLine();
-                player.description = input;
-
-                Console.WriteLine("Order these attributes by importance, from most important to least.");
-                Console.WriteLine("Agility, Brawn, Smarts");
-                Console.Write("> ");
-
-                string[] inputArray = Console.ReadLine().ToLower().Split(",");
-                if (inputArray.Length != 3)
-                    throw new Exception();
-
-                Attribute first = (Attribute)Enum.Parse(typeof(Attribute), inputArray[0].Trim(), true);
-                Attribute second = (Attribute)Enum.Parse(typeof(Attribute), inputArray[1].Trim(), true);
-                Attribute third = (Attribute)Enum.Parse(typeof(Attribute), inputArray[2].Trim(), true);
-
-                player.attributes.Add(first, 5);
-                player.attributes.Add(second, 3);
-                player.attributes.Add(third, 1);
-
-                player.hp = player.attributes[Attribute.Brawn] * 5;
-
-                foreach (Room room in _game.rooms)
+                try
                 {
-                    if (room.characters.Contains(player))
-                        player.currentRoom = room;
+                    Player player = _game.player;
+                    Console.WriteLine("What is your name?");
+                    Console.Write("> ");
+
+                    string input = Console.ReadLine();
+                    player.name = input;
+
+                    Console.WriteLine("How do you look?");
+                    Console.Write("> ");
+
+                    input = Console.ReadLine();
+                    player.description = input;
+
+                    Console.WriteLine("Order these attributes by importance, from most important to least.");
+                    Console.WriteLine("Agility, Brawn, Smarts");
+                    Console.Write("> ");
+
+                    string[] inputArray = Console.ReadLine().ToLower().Split(",");
+                    if (inputArray.Length != 3)
+                        throw new Exception();
+
+                    Attribute first = (Attribute)Enum.Parse(typeof(Attribute), inputArray[0].Trim(), true);
+                    Attribute second = (Attribute)Enum.Parse(typeof(Attribute), inputArray[1].Trim(), true);
+                    Attribute third = (Attribute)Enum.Parse(typeof(Attribute), inputArray[2].Trim(), true);
+
+                    player.attributes.Add(first, 5);
+                    player.attributes.Add(second, 3);
+                    player.attributes.Add(third, 1);
+
+                    player.hp = player.attributes[Attribute.Brawn] * 5;
+
+                    foreach (Room room in _game.rooms)
+                    {
+                        if (room.characters.Contains(player))
+                            player.currentRoom = room;
+                    }
+
+                    creating = false;
                 }
-            }
-            catch (System.Exception e)
-            {
-                Console.WriteLine("Something went wrong. Please try again.");
+                catch (System.Exception e)
+                {
+                    Console.Write(e);
+                    Console.WriteLine("Something went wrong. Please try again.");
+                }
             }
         }
 
@@ -139,6 +149,5 @@ namespace LegendsOfAntir
             string jsonString = JsonConvert.SerializeObject(_game, Formatting.Indented, _jsonSettings);
             File.WriteAllText("Ressources\\save.json", jsonString);
         }
-
     }
 }

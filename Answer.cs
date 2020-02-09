@@ -8,6 +8,9 @@ namespace LegendsOfAntir
         [JsonProperty]
         private String text;
         public DialogueNode destination;
+        public bool give;
+        public string[] items;
+        public string character;
 
         public Answer(){}
 

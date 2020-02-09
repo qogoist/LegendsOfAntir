@@ -1,87 +1,718 @@
 {
-    "items": [
-        {
-            "$id": "1000",
-            "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
-            "name": "mace",
-            "damage": 3,
-            "attribute": "Brawn"
-        }
-    ],
-    "player": {
-        "$id": "1",
-        "$type": "LegendsOfAntir.Player, LegendsOfAntir",
-        "name": null,
-        "description": null,
-        "currentRoom": null,
-        "inventory": [],
-        "hp": 0,
-        "attributes": {},
-        "weapon": null,
-        "armor": null
+  "items": [
+    {
+      "$id": "1000",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "name": "mace",
+      "damage": 3,
+      "attribute": "Brawn"
     },
-    "rooms": [
+    {
+      "$id": "1001",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "name": "dagger",
+      "damage": 1,
+      "attribute": "Agility"
+    },
+    {
+      "$id": "1002",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "name": "sword",
+      "damage": 2,
+      "attribute": "Brawn"
+    },
+    {
+      "$id": "1003",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "name": "Bow",
+      "damage": 2,
+      "attribute": "Agility"
+    },
+    {
+      "$id": "1004",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "name": "gambeson",
+      "protection": 1
+    },
+    {
+      "$id": "1005",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "name": "leather armor",
+      "protection": 2
+    },
+    {
+      "$id": "1006",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "name": "chain mail",
+      "protection": 3
+    },
+    {
+      "$id": "1007",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "name": "plate armor",
+      "protection": 4
+    },
+    {
+      "$id": "1008",
+      "name": "necklace"
+    },
+    {
+      "$id": "1009",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "name": "wand",
+      "damage": 5,
+      "attribute": "Smarts"
+    }
+  ],
+  "player": {
+    "$id": "1",
+    "$type": "LegendsOfAntir.Player, LegendsOfAntir",
+    "name": null,
+    "description": null,
+    "currentRoom": null,
+    "inventory": [],
+    "hp": 0,
+    "attributes": {},
+    "weapon": null,
+    "armor": null
+  },
+  "dialogueNodes": [
+    {
+      "$id": "2000",
+      "text": " 'Hello my dear' the Old Lady greets you, stumbling slightly away from the tree and in your direction. 'Where to? Where to?'",
+      "answers": [
         {
-            "$id": "10",
-            "description": "A white room. Totally blank, nothing to see here.",
-            "characters": [
-                {
-                    "$ref": "1"
-                },
-                {
-                    "$id": "100",
-                    "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
-                    "name": "Skelleton",
-                    "description": "A scrawny skelleton, holding a mace.",
-                    "currentRoom": {
-                        "$ref": "10"
-                    },
-                    "inventory": [
-                        {
-                            "$ref": "1000"
-                        }
-                    ],
-                    "hp": 10,
-                    "attributes": {
-                        "Agility": 1,
-                        "Brawn": 2,
-                        "Smarts": 0
-                    },
-                    "weapon": {
-                        "$ref": "1000"
-                    },
-                    "armor": null,
-                    "dialogue": null,
-                    "status": "Hostile",
-                    "home": {
-                        "$ref": "10"
-                    }
-                }
-            ],
-            "items": [],
-            "exits": {
-                "north": {
-                    "$id": "11",
-                    "description": "Another room.  This one has some chairs in it.",
-                    "characters": [],
-                    "items": [],
-                    "exits": {
-                        "south": {
-                            "$ref": "10"
-                        }
-                    }
-                }
-            }
+          "text": "Looking for adventure.",
+          "destination": {
+            "$id": "2001",
+            "text": "'Adventure you say?' The Old Lady cackles. 'Well there is adventure to be found in the east. If you are not afraid of the undead.",
+            "answers": [
+              {
+                "text": "Thanks.",
+                "destination": null
+              }
+            ]
+          }
         },
         {
-            "$ref": "11"
+          "text": "I don't know where I am.",
+          "destination": {
+            "$id": "2002",
+            "text": "'Ohhh... well you are in the forrest my dear.' The Old Lady laughs quietly.",
+            "answers": [
+              {
+                "text": "Thanks.",
+                "destination": null
+              },
+              {
+                "text": "Where is the nearest town.",
+                "destination": {
+                  "$id": "2003",
+                  "text": "'It is right over there, my dear.' The Old Lady points over her shoulder towards the North. 'But it is barely more than a village.",
+                  "answers": [
+                    {
+                      "text": "Thanks.",
+                      "destination": null
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "What sort of forest?",
+                "destination": {
+                  "$id": "2004",
+                  "text": "'An old one. A haunted one. If I were you I wouldn't go near the shrine to the east. Many have gone there that have never come back.' She lookes over her shoulder, suddenly very nervours. 'But I have already said enough.'",
+                  "answers": [
+                    {
+                      "text": "Thanks.",
+                      "destination": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         }
-    ],
-    "characters": [],
-    "dialogueNodes": [],
-    "answers": [],
-    "commands": [],
-    "lowerDifficulty": 8,
-    "higherDifficulty": 12,
-    "initiative": {}
+      ]
+    },
+    {
+      "$id": "2005",
+      "text": "'Hey there.' The Farmer greets you, looking at you with distrust. 'We don't get many travellers here.'",
+      "answers": [
+        {
+          "text": "Bye.",
+          "destination": null
+        },
+        {
+          "text": "Not looking for trouble.",
+          "destination": {
+            "$id": "2006",
+            "text": "'You'd better not be.' The Farmer utters under his breath. 'If you're not looking for trouble, what brings you here, then?'",
+            "answers": [
+              {
+                "text": "Got lost in the woods.",
+                "destination": {
+                  "$id": "2007",
+                  "text": "'Lost in the woods, eyh?' He shakes his head. 'Well you definitely look the part. Take my advise and keep away from the plains. It'S not safe there.'",
+                  "answers": [
+                    {
+                      "text": "Thanks, bye.",
+                      "destination": null
+                    }
+                  ]
+                }
+              },
+              {
+                "text": "Looking for work.",
+                "destination": {
+                  "$id": "2008",
+                  "text": "'Aren't we all?' He takes a look at you. 'Don't look like much of a farmhand to me. So what can you do?'",
+                  "answers": [
+                    {
+                      "text": "Killing.",
+                      "destination": {
+                        "$id": "2009",
+                        "text": "'A mercenary...' He huffs quietly. 'Look for the Major. I think we might have work for your kind.'",
+                        "answers": [
+                          {
+                            "text": "Thanks. Will do.",
+                            "destination": null
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "text": "Am a merchant.",
+                      "destination": {
+                        "$id": "2010",
+                        "text": "'Well good luck then. Village is not exactly rich.' He says before he turns to resume his work.",
+                        "answers": [
+                          {
+                            "text": "Bye.",
+                            "destination": null
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "$id": "2011",
+      "text": "The woman turns to you as you approach. 'An outsider? In our village? It must be the end of times.'",
+      "answers": [
+        {
+          "text": "Nah, just coincidence",
+          "destination": {
+            "$id": "2012",
+            "text": "She nods. 'The more likely option. Though I have certainly seen enough that says otherwise.'",
+            "answers": [
+              {
+                "$id": "3000",
+                "text": "What's going on?",
+                "destination": {
+                  "$id": "2014",
+                  "text": "She looks at you for a moment before she nods. 'You look like you could hold yourself in a fight. Perhaps you could help.'",
+                  "answers": [
+                    {
+                      "text": "Not really.",
+                      "destination": {
+                        "$id": "2016",
+                        "text": "'A shame. She utters before she lets you go.",
+                        "answers": [
+                          {
+                            "text": "Bye.",
+                            "destination": null
+                          },
+                          {
+                            "text": "On a second thought.",
+                            "destination": {
+                              "$id": "2017",
+                              "text": "'There is a band of orcs in the plains, threatening to raid our little village. If you could help use, perhaps things could finally get better. And they are bound to have some loot.'",
+                              "answers": [
+                                {
+                                  "text": "Sure. I'll take care of them.",
+                                  "destination": null
+                                },
+                                {
+                                  "text": "Gonna need some weapons.",
+                                  "destination": {
+                                    "$id": "2018",
+                                    "text": "She sighs. 'I can give you my spare sword. But I hope you won't do anything stupid with it.'",
+                                    "answers": [
+                                      {
+                                        "text": "Thanks. I'll take care of them.",
+                                        "destination": null
+                                      }
+                                    ],
+                                    "give": true,
+                                    "items": [
+                                      "sword"
+                                    ],
+                                    "character": "Major"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "text": "Sure.",
+                      "destination": {
+                        "$ref": "2017"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$id": "3001",
+                "text": "Dont care.",
+                "destination": null
+              }
+            ]
+          }
+        },
+        {
+          "text": "Perhaps.",
+          "destination": {
+            "$id": "2013",
+            "text": "She sighs quietly. 'You have no idea how right you are.'",
+            "answers": [
+              {
+                "$ref": "3000"
+              },
+              {
+                "$ref": "3001"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "$id": "10",
+      "description": "You find yourself in the remainders of an abandoned campsite. Your so called companions have long left.",
+      "characters": [
+        {
+          "$ref": "1"
+        }
+      ],
+      "items": [
+        {
+          "$ref": "1001"
+        }
+      ],
+      "exits": {
+        "north": {
+          "$id": "11",
+          "description": "You enter the forrest, following the narrow path. After a while you come to a halt at a crossroads.",
+          "characters": [
+            {
+              "$id": "103",
+              "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+              "name": "Old Lady",
+              "description": "A slightly crazed looking old lady, carrrying a basket filled with mushrooms. She leans heavily against a tree.",
+              "currentRoom": {
+                "$ref": "11"
+              },
+              "inventory": [],
+              "hp": 6,
+              "attributes": {
+                "Agility": 0,
+                "Brawn": 1,
+                "Smarts": 5
+              },
+              "weapon": null,
+              "armor": null,
+              "dialogue": {
+                "$ref": "2000"
+              },
+              "status": "Friendly",
+              "home": {
+                "$ref": "11"
+              }
+            }
+          ],
+          "items": [],
+          "exits": {
+            "north": {
+              "$id": "12",
+              "description": "You enter a small village. A few children that were playing in the street quickly scurry away as you arrive.",
+              "characters": [
+                {
+                  "$id": "102",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "name": "Farmer",
+                  "description": "An older man, tanned and muscular from the work on the fields.",
+                  "currentRoom": {
+                    "$ref": "12"
+                  },
+                  "inventory": [],
+                  "hp": 15,
+                  "attributes": {
+                    "Agility": 2,
+                    "Brawn": 3,
+                    "Smarts": 1
+                  },
+                  "weapon": null,
+                  "armor": null,
+                  "dialogue": {
+                    "$ref": "2005"
+                  },
+                  "status": "Friendly",
+                  "home": {
+                    "$ref": "12"
+                  }
+                },
+                {
+                  "$id": "105",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "name": "Major",
+                  "description": "A stern looking woman wearing pieces of armor.",
+                  "currentRoom": {
+                    "$ref": "12"
+                  },
+                  "inventory": [
+                    {
+                      "$ref": "1005"
+                    },
+                    {
+                      "$ref": "1002"
+                    },
+                    {
+                      "$ref": "1002"
+                    }
+                  ],
+                  "hp": 20,
+                  "attributes": {
+                    "Agility": 4,
+                    "Brawn": 4,
+                    "Smarts": 2
+                  },
+                  "weapon": {
+                    "$ref": "1002"
+                  },
+                  "armor": {
+                    "$ref": "1005"
+                  },
+                  "dialogue": {
+                    "$ref": "2011"
+                  },
+                  "status": "Friendly",
+                  "home": {
+                    "$ref": "12"
+                  }
+                },
+                {
+                  "$id": "101",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "name": "Wolf",
+                  "description": "A fluffy little wolf.",
+                  "currentRoom": {
+                    "$ref": "12"
+                  },
+                  "inventory": [],
+                  "hp": 12,
+                  "attributes": {
+                    "Agility": 2,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": {},
+                  "armor": null,
+                  "dialogue": null,
+                  "status": "Hostile",
+                  "home": null
+                }
+              ],
+              "items": [],
+              "exits": {
+                "north": {
+                  "$id": "14",
+                  "description": "You enter the plains. Nothing but flat land, as far as you can see.",
+                  "characters": [
+                    {
+                      "$id": "106",
+                      "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                      "name": "Orc Warrior",
+                      "description": "A brawny lookin orc. His tusks alone are the size of your hand.",
+                      "currentRoom": {
+                        "$ref": "14"
+                      },
+                      "inventory": [
+                        {
+                          "$ref": "1000"
+                        },
+                        {
+                          "$ref": "1006"
+                        }
+                      ],
+                      "hp": 15,
+                      "attributes": {
+                        "Agility": 2,
+                        "Brawn": 3,
+                        "Smarts": 1
+                      },
+                      "weapon": {
+                        "$ref": "1000"
+                      },
+                      "armor": {
+                        "$ref": "1006"
+                      },
+                      "dialogue": null,
+                      "status": "Hostile",
+                      "home": {
+                        "$ref": "14"
+                      }
+                    },
+                    {
+                      "$id": "107",
+                      "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                      "name": "Orc Archer",
+                      "description": "A slightly smaller orc, wielding a wicked bow.",
+                      "currentRoom": {
+                        "$ref": "14"
+                      },
+                      "inventory": [
+                        {
+                          "$ref": "1003"
+                        },
+                        {
+                          "$ref": "1004"
+                        }
+                      ],
+                      "hp": 10,
+                      "attributes": {
+                        "Agility": 2,
+                        "Brawn": 2,
+                        "Smarts": 2
+                      },
+                      "weapon": {
+                        "$ref": "1003"
+                      },
+                      "armor": {
+                        "$ref": "1004"
+                      },
+                      "dialogue": null,
+                      "status": "Hostile",
+                      "home": {
+                        "$ref": "14"
+                      }
+                    }
+                  ],
+                  "items": [],
+                  "exits": {
+                    "north": {
+                      "$id": "15",
+                      "description": "You spot a small hut in the plains. You are not sure how you have not seen it earlier. It stands slightly askew, doubtlessly a product of the everpresent winds.",
+                      "characters": [
+                        {
+                          "$id": "108",
+                          "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                          "name": "Magus",
+                          "description": "A tall old man withan impressive beard.",
+                          "currentRoom": {
+                            "$ref": "15"
+                          },
+                          "inventory": [
+                            {
+                              "$ref": "1009"
+                            }
+                          ],
+                          "hp": 10,
+                          "attributes": {
+                            "Agility": 3,
+                            "Brawn": 2,
+                            "Smarts": 5
+                          },
+                          "weapon": {
+                            "$ref": "1009"
+                          },
+                          "armor": null,
+                          "dialogue": null,
+                          "status": "Hostile",
+                          "home": {
+                            "$ref": "15"
+                          }
+                        }
+                      ],
+                      "items": [
+                        {
+                          "$ref": "1007"
+                        }
+                      ],
+                      "exits": {
+                        "north": {
+                          "$ref": "14"
+                        },
+                        "east": {
+                          "$ref": "14"
+                        },
+                        "south": {
+                          "$ref": "14"
+                        },
+                        "west": {
+                          "$ref": "14"
+                        }
+                      }
+                    },
+                    "east": {
+                      "$ref": "14"
+                    },
+                    "south": {
+                      "$ref": "12"
+                    },
+                    "west": {
+                      "$ref": "14"
+                    }
+                  }
+                },
+                "east": {
+                  "$ref": "14"
+                },
+                "south": {
+                  "$ref": "11"
+                },
+                "west": {
+                  "$ref": "14"
+                }
+              }
+            },
+            "east": {
+              "$id": "13",
+              "description": "After a while of walking you find your way to the remnants of a long abandoned shrine. It reeks of death and decay.",
+              "characters": [
+                {
+                  "$id": "100",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "name": "Skelleton",
+                  "description": "The skelleton of a human. It's bones rattle with every step.",
+                  "currentRoom": {
+                    "$ref": "13"
+                  },
+                  "inventory": [
+                    {
+                      "$ref": "1000"
+                    }
+                  ],
+                  "hp": 10,
+                  "attributes": {
+                    "Agility": 1,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": {
+                    "$ref": "1000"
+                  },
+                  "armor": null,
+                  "dialogue": null,
+                  "status": "Hostile",
+                  "home": {
+                    "$ref": "13"
+                  }
+                },
+                {
+                  "$id": "104",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "name": "Zombie",
+                  "description": "A Zombie. It reeks of death.",
+                  "currentRoom": {
+                    "$ref": "13"
+                  },
+                  "inventory": [
+                    {
+                      "$ref": "1008"
+                    }
+                  ],
+                  "hp": 15,
+                  "attributes": {
+                    "Agility": 0,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": null,
+                  "armor": null,
+                  "dialogue": null,
+                  "status": "Hostile",
+                  "home": {
+                    "$ref": "13"
+                  }
+                }
+              ],
+              "items": [
+                {
+                  "$ref": "1004"
+                }
+              ],
+              "exits": {
+                "west": {
+                  "$ref": "11"
+                }
+              }
+            },
+            "south": {
+              "$ref": "10"
+            }
+          }
+        }
+      }
+    },
+    {
+      "$ref": "11"
+    },
+    {
+      "$ref": "12"
+    },
+    {
+      "$ref": "13"
+    },
+    {
+      "$ref": "14"
+    },
+    {
+      "$ref": "15"
+    }
+  ],
+  "characters": [
+    {
+      "$ref": "100"
+    },
+    {
+      "$ref": "101"
+    },
+    {
+      "$ref": "102"
+    },
+    {
+      "$ref": "103"
+    },
+    {
+      "$ref": "104"
+    },
+    {
+      "$ref": "105"
+    },
+    {
+      "$ref": "106"
+    },
+    {
+      "$ref": "107"
+    },
+    {
+      "$ref": "108"
+    }
+  ],
+  "lowerDifficulty": 8,
+  "higherDifficulty": 12,
+  "initiative": {}
 }

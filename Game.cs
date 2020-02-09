@@ -11,27 +11,26 @@ namespace LegendsOfAntir
         public List<Room> rooms;
         public List<Character> characters;
         public List<DialogueNode> dialogueNodes;
-        public List<Answer> answers;
         public int lowerDifficulty;
         public int higherDifficulty;
         public Dictionary<Character, int> initiative;
 
-        private static bool stop = false;
+        public bool stop;
 
-        public Game(){}
+        public Game() { }
 
         public void GameLoop()
         {
-            bool running = true;
+            bool moved = true;
             do
             {
-                Room currentRoom = player.currentRoom;
-                currentRoom.Show();
-                running = this.GetPlayerCommand();
-            } while (running && !stop);
-
-            Program.SaveGameFIle();
-
+                if (moved)
+                {
+                    Room currentRoom = player.currentRoom;
+                    currentRoom.Show();
+                }
+                moved = this.GetPlayerCommand();
+            } while (!stop);
         }
 
         public void ShowCommands()
@@ -103,6 +102,7 @@ namespace LegendsOfAntir
                 }
             }
 
+            Console.WriteLine("The fight is over.");
             initiative.Clear();
 
         }
@@ -119,7 +119,7 @@ namespace LegendsOfAntir
                     Console.WriteLine("2. Flee.");
 
                     Console.Write("> ");
-                    string[] input = Console.ReadLine().ToLower().Split(" ");
+                    string[] input = Console.ReadLine().ToLower().Split(" ", 2);
                     string command = input[0];
                     string option = "";
 
@@ -201,7 +201,7 @@ namespace LegendsOfAntir
             {
                 Console.Write("> ");
                 string input = Console.ReadLine().ToLower();
-                string[] inputArray = input.Split(" ");
+                string[] inputArray = input.Split(" ", 2);
                 string command = inputArray[0];
                 string option = "";
 
@@ -222,16 +222,18 @@ namespace LegendsOfAntir
 
                     case "look":
                     case "l":
-                        break;
+                        return true;
 
                     case "move":
                     case "m":
                         player.Move((Direction)Enum.Parse(typeof(Direction), option, true));
-                        break;
+                        return true;
 
                     case "quit":
                     case "q":
-                        return false;
+                        Program.SaveGameFIle();
+                        stop = true;
+                        break;
 
                     case "take":
                     case "t":
@@ -263,14 +265,14 @@ namespace LegendsOfAntir
                         break;
                 }
             }
-            catch (System.Exception e) 
+            catch (System.Exception e)
             {
-                // Console.WriteLine("Your command was false or incomplete. Please try again.");
+                Console.WriteLine("Your command was false or incomplete. Please try again.");
                 Console.WriteLine(e);
                 return this.GetPlayerCommand();
             }
 
-            return true;
+            return false;
         }
 
         public void OnDeathEvent()
@@ -279,7 +281,7 @@ namespace LegendsOfAntir
             Console.WriteLine("Game Over.");
             stop = true;
         }
-        
+
         public void AddDeathListener()
         {
             this.player.deathEvent += OnDeathEvent;

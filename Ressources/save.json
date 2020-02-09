@@ -7,92 +7,723 @@
       "damage": 3,
       "attribute": 1,
       "name": "mace"
+    },
+    {
+      "$id": "3",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "damage": 1,
+      "attribute": 0,
+      "name": "dagger"
+    },
+    {
+      "$id": "4",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "damage": 2,
+      "attribute": 1,
+      "name": "sword"
+    },
+    {
+      "$id": "5",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "damage": 2,
+      "attribute": 0,
+      "name": "Bow"
+    },
+    {
+      "$id": "6",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "protection": 1,
+      "name": "gambeson"
+    },
+    {
+      "$id": "7",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "protection": 2,
+      "name": "leather armor"
+    },
+    {
+      "$id": "8",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "protection": 3,
+      "name": "chain mail"
+    },
+    {
+      "$id": "9",
+      "$type": "LegendsOfAntir.Armor, LegendsOfAntir",
+      "protection": 4,
+      "name": "plate armor"
+    },
+    {
+      "$id": "10",
+      "name": "necklace"
     }
   ],
   "player": {
-    "$id": "3",
+    "$id": "11",
     "name": "Jonas",
-    "description": "tall",
+    "description": "pale",
     "currentRoom": {
-      "$id": "4",
-      "description": "A white room. Totally blank, nothing to see here.",
+      "$id": "12",
+      "description": "You enter a small village. A few children that were playing in the street quickly scurry away as you arrive.",
       "characters": [
         {
-          "$id": "5",
+          "$id": "13",
           "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
-          "dialogue": null,
-          "status": 2,
+          "dialogue": {
+            "$id": "14",
+            "text": "'Hey there.' The Farmer greets you, looking at you with distrust. 'We don't get many travellers here.'",
+            "answers": [
+              {
+                "$id": "15",
+                "text": "Bye.",
+                "destination": null,
+                "give": false,
+                "items": null,
+                "character": null
+              },
+              {
+                "$id": "16",
+                "text": "Not looking for trouble.",
+                "destination": {
+                  "$id": "17",
+                  "text": "'You'd better not be.' The Farmer utters under his breath. 'If you're not looking for trouble, what brings you here, then?'",
+                  "answers": [
+                    {
+                      "$id": "18",
+                      "text": "Got lost in the woods.",
+                      "destination": {
+                        "$id": "19",
+                        "text": "'Lost in the woods, eyh?' He shakes his head. 'Well you definitely look the part. Take my advise and keep away from the plains. It'S not safe there.'",
+                        "answers": [
+                          {
+                            "$id": "20",
+                            "text": "Thanks, bye.",
+                            "destination": null,
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          }
+                        ],
+                        "give": false,
+                        "items": null,
+                        "character": null
+                      },
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    },
+                    {
+                      "$id": "21",
+                      "text": "Looking for work.",
+                      "destination": {
+                        "$id": "22",
+                        "text": "'Aren't we all?' He takes a look at you. 'Don't look like much of a farmhand to me. So what can you do?'",
+                        "answers": [
+                          {
+                            "$id": "23",
+                            "text": "Killing.",
+                            "destination": {
+                              "$id": "24",
+                              "text": "'A mercenary...' He huffs quietly. 'Look for the Major. I think we might have work for your kind.'",
+                              "answers": [
+                                {
+                                  "$id": "25",
+                                  "text": "Thanks. Will do.",
+                                  "destination": null,
+                                  "give": false,
+                                  "items": null,
+                                  "character": null
+                                }
+                              ],
+                              "give": false,
+                              "items": null,
+                              "character": null
+                            },
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          },
+                          {
+                            "$id": "26",
+                            "text": "Am a merchant.",
+                            "destination": {
+                              "$id": "27",
+                              "text": "'Well good luck then. Village is not exactly rich.' He says before he turns to resume his work.",
+                              "answers": [
+                                {
+                                  "$id": "28",
+                                  "text": "Bye.",
+                                  "destination": null,
+                                  "give": false,
+                                  "items": null,
+                                  "character": null
+                                }
+                              ],
+                              "give": false,
+                              "items": null,
+                              "character": null
+                            },
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          }
+                        ],
+                        "give": false,
+                        "items": null,
+                        "character": null
+                      },
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    }
+                  ],
+                  "give": false,
+                  "items": null,
+                  "character": null
+                },
+                "give": false,
+                "items": null,
+                "character": null
+              }
+            ],
+            "give": false,
+            "items": null,
+            "character": null
+          },
+          "status": 1,
           "home": {
-            "$ref": "4"
+            "$ref": "12"
           },
-          "name": "Skelleton",
-          "description": "A scrawny skelleton, holding a mace.",
+          "name": "Farmer",
+          "description": "An older man, tanned and muscular from the work on the fields.",
           "currentRoom": {
-            "$ref": "4"
+            "$ref": "12"
           },
-          "inventory": [
-            {
-              "$ref": "2"
-            }
-          ],
-          "hp": 9,
+          "inventory": [],
+          "hp": 15,
           "attributes": {
-            "$id": "6",
-            "Agility": 1,
-            "Brawn": 2,
-            "Smarts": 0
+            "$id": "29",
+            "Agility": 2,
+            "Brawn": 3,
+            "Smarts": 1
           },
-          "weapon": {
-            "$ref": "2"
-          },
+          "weapon": null,
           "armor": null
         },
         {
-          "$ref": "3"
+          "$id": "30",
+          "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+          "dialogue": {
+            "$id": "31",
+            "text": "The woman turns to you as you approach. 'An outsider? In our village? It must be the end of times.'",
+            "answers": [
+              {
+                "$id": "32",
+                "text": "Nah, just coincidence",
+                "destination": {
+                  "$id": "33",
+                  "text": "She nods. 'The more likely option. Though I have certainly seen enough that says otherwise.'",
+                  "answers": [
+                    {
+                      "$id": "34",
+                      "text": "What's going on?",
+                      "destination": {
+                        "$id": "35",
+                        "text": "She looks at you for a moment before she nods. 'You look like you could hold yourself in a fight. Perhaps you could help.'",
+                        "answers": [
+                          {
+                            "$id": "36",
+                            "text": "Not really.",
+                            "destination": {
+                              "$id": "37",
+                              "text": "'A shame. She utters before she lets you go.",
+                              "answers": [
+                                {
+                                  "$id": "38",
+                                  "text": "Bye.",
+                                  "destination": null,
+                                  "give": false,
+                                  "items": null,
+                                  "character": null
+                                },
+                                {
+                                  "$id": "39",
+                                  "text": "On a second thought.",
+                                  "destination": {
+                                    "$id": "40",
+                                    "text": "'There is a band of orcs in the plains, threatening to raid our little village. If you could help use, perhaps things could finally get better. And they are bound to have some loot.'",
+                                    "answers": [
+                                      {
+                                        "$id": "41",
+                                        "text": "Sure. I'll take care of them.",
+                                        "destination": null,
+                                        "give": false,
+                                        "items": null,
+                                        "character": null
+                                      },
+                                      {
+                                        "$id": "42",
+                                        "text": "Gonna need some weapons.",
+                                        "destination": {
+                                          "$id": "43",
+                                          "text": "She sighs. 'I can give you my spare sword. But I hope you won't do anything stupid with it.'",
+                                          "answers": [
+                                            {
+                                              "$id": "44",
+                                              "text": "Thanks. I'll take care of them.",
+                                              "destination": null,
+                                              "give": false,
+                                              "items": null,
+                                              "character": null
+                                            }
+                                          ],
+                                          "give": true,
+                                          "items": [
+                                            "sword"
+                                          ],
+                                          "character": "Major"
+                                        },
+                                        "give": false,
+                                        "items": null,
+                                        "character": null
+                                      }
+                                    ],
+                                    "give": false,
+                                    "items": null,
+                                    "character": null
+                                  },
+                                  "give": false,
+                                  "items": null,
+                                  "character": null
+                                }
+                              ],
+                              "give": false,
+                              "items": null,
+                              "character": null
+                            },
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          },
+                          {
+                            "$id": "45",
+                            "text": "Sure.",
+                            "destination": {
+                              "$ref": "40"
+                            },
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          }
+                        ],
+                        "give": false,
+                        "items": null,
+                        "character": null
+                      },
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    },
+                    {
+                      "$id": "46",
+                      "text": "Dont care.",
+                      "destination": null,
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    }
+                  ],
+                  "give": false,
+                  "items": null,
+                  "character": null
+                },
+                "give": false,
+                "items": null,
+                "character": null
+              },
+              {
+                "$id": "47",
+                "text": "Perhaps.",
+                "destination": {
+                  "$id": "48",
+                  "text": "She sighs quietly. 'You have no idea how right you are.'",
+                  "answers": [
+                    {
+                      "$ref": "34"
+                    },
+                    {
+                      "$ref": "46"
+                    }
+                  ],
+                  "give": false,
+                  "items": null,
+                  "character": null
+                },
+                "give": false,
+                "items": null,
+                "character": null
+              }
+            ],
+            "give": false,
+            "items": null,
+            "character": null
+          },
+          "status": 1,
+          "home": {
+            "$ref": "12"
+          },
+          "name": "Major",
+          "description": "A stern looking woman wearing pieces of armor.",
+          "currentRoom": {
+            "$ref": "12"
+          },
+          "inventory": [
+            {
+              "$ref": "7"
+            },
+            {
+              "$ref": "4"
+            },
+            {
+              "$ref": "4"
+            }
+          ],
+          "hp": 20,
+          "attributes": {
+            "$id": "49",
+            "Agility": 4,
+            "Brawn": 4,
+            "Smarts": 2
+          },
+          "weapon": {
+            "$ref": "4"
+          },
+          "armor": {
+            "$ref": "7"
+          }
+        },
+        {
+          "$ref": "11"
         }
       ],
       "items": [],
       "exits": {
-        "$id": "7",
-        "North": {
-          "$id": "8",
-          "description": "Another room.  This one has some chairs in it.",
-          "characters": [],
+        "$id": "50",
+        "South": {
+          "$id": "51",
+          "description": "You enter the forrest, following the narrow path. After a while you come to a halt at a crossroads.",
+          "characters": [
+            {
+              "$id": "52",
+              "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+              "dialogue": {
+                "$id": "53",
+                "text": " 'Hello my dear' the Old Lady greets you, stumbling slightly away from the tree and in your direction. 'Where to? Where to?'",
+                "answers": [
+                  {
+                    "$id": "54",
+                    "text": "Looking for adventure.",
+                    "destination": {
+                      "$id": "55",
+                      "text": "'Adventure you say?' The Old Lady cackles. 'Well there is adventure to be found in the east. If you are not afraid of the undead.",
+                      "answers": [
+                        {
+                          "$id": "56",
+                          "text": "Thanks.",
+                          "destination": null,
+                          "give": false,
+                          "items": null,
+                          "character": null
+                        }
+                      ],
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    },
+                    "give": false,
+                    "items": null,
+                    "character": null
+                  },
+                  {
+                    "$id": "57",
+                    "text": "I don't know where I am.",
+                    "destination": {
+                      "$id": "58",
+                      "text": "'Ohhh... well you are in the forrest my dear.' The Old Lady laughs quietly.",
+                      "answers": [
+                        {
+                          "$id": "59",
+                          "text": "Thanks.",
+                          "destination": null,
+                          "give": false,
+                          "items": null,
+                          "character": null
+                        },
+                        {
+                          "$id": "60",
+                          "text": "Where is the nearest town.",
+                          "destination": {
+                            "$id": "61",
+                            "text": "'It is right over there, my dear.' The Old Lady points over her shoulder towards the North. 'But it is barely more than a village.",
+                            "answers": [
+                              {
+                                "$id": "62",
+                                "text": "Thanks.",
+                                "destination": null,
+                                "give": false,
+                                "items": null,
+                                "character": null
+                              }
+                            ],
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          },
+                          "give": false,
+                          "items": null,
+                          "character": null
+                        },
+                        {
+                          "$id": "63",
+                          "text": "What sort of forest?",
+                          "destination": {
+                            "$id": "64",
+                            "text": "'An old one. A haunted one. If I were you I wouldn't go near the shrine to the east. Many have gone there that have never come back.' She lookes over her shoulder, suddenly very nervours. 'But I have already said enough.'",
+                            "answers": [
+                              {
+                                "$id": "65",
+                                "text": "Thanks.",
+                                "destination": null,
+                                "give": false,
+                                "items": null,
+                                "character": null
+                              }
+                            ],
+                            "give": false,
+                            "items": null,
+                            "character": null
+                          },
+                          "give": false,
+                          "items": null,
+                          "character": null
+                        }
+                      ],
+                      "give": false,
+                      "items": null,
+                      "character": null
+                    },
+                    "give": false,
+                    "items": null,
+                    "character": null
+                  }
+                ],
+                "give": false,
+                "items": null,
+                "character": null
+              },
+              "status": 1,
+              "home": {
+                "$ref": "51"
+              },
+              "name": "Old Lady",
+              "description": "A slightly crazed looking old lady, carrrying a basket filled with mushrooms. She leans heavily against a tree.",
+              "currentRoom": {
+                "$ref": "51"
+              },
+              "inventory": [],
+              "hp": 6,
+              "attributes": {
+                "$id": "66",
+                "Agility": 0,
+                "Brawn": 1,
+                "Smarts": 5
+              },
+              "weapon": null,
+              "armor": null
+            }
+          ],
           "items": [],
           "exits": {
-            "$id": "9",
+            "$id": "67",
+            "North": {
+              "$ref": "12"
+            },
+            "East": {
+              "$id": "68",
+              "description": "After a while of walking you find your way to the remnants of a long abandoned shrine. It reeks of death and decay.",
+              "characters": [
+                {
+                  "$id": "69",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "dialogue": null,
+                  "status": 2,
+                  "home": {
+                    "$ref": "68"
+                  },
+                  "name": "Skelleton",
+                  "description": "The skelleton of a human. It's bones rattle with every step.",
+                  "currentRoom": {
+                    "$ref": "68"
+                  },
+                  "inventory": [
+                    {
+                      "$ref": "2"
+                    }
+                  ],
+                  "hp": 10,
+                  "attributes": {
+                    "$id": "70",
+                    "Agility": 1,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": {
+                    "$ref": "2"
+                  },
+                  "armor": null
+                },
+                {
+                  "$id": "71",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "dialogue": null,
+                  "status": 2,
+                  "home": {
+                    "$ref": "68"
+                  },
+                  "name": "Zombie",
+                  "description": "A Zombie. It reeks of death.",
+                  "currentRoom": {
+                    "$ref": "68"
+                  },
+                  "inventory": [
+                    {
+                      "$ref": "10"
+                    }
+                  ],
+                  "hp": 15,
+                  "attributes": {
+                    "$id": "72",
+                    "Agility": 0,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": null,
+                  "armor": null
+                },
+                {
+                  "$id": "73",
+                  "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                  "dialogue": null,
+                  "status": 2,
+                  "home": null,
+                  "name": "Wolf",
+                  "description": "A fluffy little wolf.",
+                  "currentRoom": {
+                    "$ref": "68"
+                  },
+                  "inventory": [],
+                  "hp": 12,
+                  "attributes": {
+                    "$id": "74",
+                    "Agility": 2,
+                    "Brawn": 2,
+                    "Smarts": 0
+                  },
+                  "weapon": {
+                    "$id": "75",
+                    "damage": 0,
+                    "attribute": 0,
+                    "name": null
+                  },
+                  "armor": null
+                }
+              ],
+              "items": [
+                {
+                  "$ref": "6"
+                }
+              ],
+              "exits": {
+                "$id": "76",
+                "West": {
+                  "$ref": "51"
+                }
+              }
+            },
             "South": {
-              "$ref": "4"
+              "$id": "77",
+              "description": "You find yourself in the remainders of an abandoned campsite. Your so called companions have long left.",
+              "characters": [],
+              "items": [
+                {
+                  "$ref": "3"
+                }
+              ],
+              "exits": {
+                "$id": "78",
+                "North": {
+                  "$ref": "51"
+                }
+              }
             }
           }
         }
       }
     },
     "inventory": [],
-    "hp": -4,
+    "hp": 15,
     "attributes": {
-      "$id": "10",
+      "$id": "79",
       "Agility": 5,
-      "Smarts": 3,
-      "Brawn": 1
+      "Brawn": 3,
+      "Smarts": 1
     },
     "weapon": null,
     "armor": null
   },
   "rooms": [
     {
-      "$ref": "4"
+      "$ref": "77"
     },
     {
-      "$ref": "8"
+      "$ref": "51"
     }
   ],
-  "characters": [],
-  "dialogueNodes": [],
-  "answers": [],
+  "characters": [
+    {
+      "$ref": "69"
+    },
+    {
+      "$ref": "73"
+    },
+    {
+      "$ref": "13"
+    },
+    {
+      "$ref": "52"
+    },
+    {
+      "$ref": "71"
+    },
+    {
+      "$ref": "30"
+    }
+  ],
+  "dialogueNodes": [
+    {
+      "$ref": "53"
+    },
+    {
+      "$ref": "14"
+    },
+    {
+      "$ref": "31"
+    }
+  ],
   "lowerDifficulty": 8,
   "higherDifficulty": 12,
   "initiative": {
-    "$id": "11"
-  }
+    "$id": "80"
+  },
+  "stop": false
 }
