@@ -1,36 +1,87 @@
 {
+    "items": [
+        {
+            "$id": "1000",
+            "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+            "name": "mace",
+            "damage": 3,
+            "attribute": "Brawn"
+        }
+    ],
+    "player": {
+        "$id": "1",
+        "$type": "LegendsOfAntir.Player, LegendsOfAntir",
+        "name": null,
+        "description": null,
+        "currentRoom": null,
+        "inventory": [],
+        "hp": 0,
+        "attributes": {},
+        "weapon": null,
+        "armor": null
+    },
     "rooms": [
         {
-            "$id": "1",
-            "description": "A blank room. Nothing but white space.",
-            "characters": [],
+            "$id": "10",
+            "description": "A white room. Totally blank, nothing to see here.",
+            "characters": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$id": "100",
+                    "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+                    "name": "Skelleton",
+                    "description": "A scrawny skelleton, holding a mace.",
+                    "currentRoom": {
+                        "$ref": "10"
+                    },
+                    "inventory": [
+                        {
+                            "$ref": "1000"
+                        }
+                    ],
+                    "hp": 10,
+                    "attributes": {
+                        "Agility": 1,
+                        "Brawn": 2,
+                        "Smarts": 0
+                    },
+                    "weapon": {
+                        "$ref": "1000"
+                    },
+                    "armor": null,
+                    "dialogue": null,
+                    "status": "Hostile",
+                    "home": {
+                        "$ref": "10"
+                    }
+                }
+            ],
             "items": [],
             "exits": {
                 "north": {
-                    "$id": "2",
-                    "description": "A blank room. Nothing but white space.",
+                    "$id": "11",
+                    "description": "Another room.  This one has some chairs in it.",
                     "characters": [],
                     "items": [],
                     "exits": {
                         "south": {
-                            "$ref": "1"
+                            "$ref": "10"
                         }
                     }
                 }
             }
+        },
+        {
+            "$ref": "11"
         }
     ],
     "characters": [],
-    "items": [],
     "dialogueNodes": [],
     "answers": [],
     "commands": [],
     "lowerDifficulty": 8,
     "higherDifficulty": 12,
-    "initiative": [],
-    "player": {
-        "currentRoom": {
-            "$ref": "2"
-        }
-    }
+    "initiative": {}
 }

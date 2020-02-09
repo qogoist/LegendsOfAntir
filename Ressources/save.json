@@ -1,0 +1,98 @@
+{
+  "$id": "1",
+  "items": [
+    {
+      "$id": "2",
+      "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
+      "damage": 3,
+      "attribute": 1,
+      "name": "mace"
+    }
+  ],
+  "player": {
+    "$id": "3",
+    "name": "Jonas",
+    "description": "tall",
+    "currentRoom": {
+      "$id": "4",
+      "description": "A white room. Totally blank, nothing to see here.",
+      "characters": [
+        {
+          "$id": "5",
+          "$type": "LegendsOfAntir.NPC, LegendsOfAntir",
+          "dialogue": null,
+          "status": 2,
+          "home": {
+            "$ref": "4"
+          },
+          "name": "Skelleton",
+          "description": "A scrawny skelleton, holding a mace.",
+          "currentRoom": {
+            "$ref": "4"
+          },
+          "inventory": [
+            {
+              "$ref": "2"
+            }
+          ],
+          "hp": 9,
+          "attributes": {
+            "$id": "6",
+            "Agility": 1,
+            "Brawn": 2,
+            "Smarts": 0
+          },
+          "weapon": {
+            "$ref": "2"
+          },
+          "armor": null
+        },
+        {
+          "$ref": "3"
+        }
+      ],
+      "items": [],
+      "exits": {
+        "$id": "7",
+        "North": {
+          "$id": "8",
+          "description": "Another room.  This one has some chairs in it.",
+          "characters": [],
+          "items": [],
+          "exits": {
+            "$id": "9",
+            "South": {
+              "$ref": "4"
+            }
+          }
+        }
+      }
+    },
+    "inventory": [],
+    "hp": -4,
+    "attributes": {
+      "$id": "10",
+      "Agility": 5,
+      "Smarts": 3,
+      "Brawn": 1
+    },
+    "weapon": null,
+    "armor": null
+  },
+  "rooms": [
+    {
+      "$ref": "4"
+    },
+    {
+      "$ref": "8"
+    }
+  ],
+  "characters": [],
+  "dialogueNodes": [],
+  "answers": [],
+  "lowerDifficulty": 8,
+  "higherDifficulty": 12,
+  "initiative": {
+    "$id": "11"
+  }
+}

@@ -72,7 +72,9 @@ namespace LegendsOfAntir
                 damage = (damage + attributeNum) / 2;
             }
 
-            int armor = target.armor.protection;
+            int armor = 0;
+            if (target.armor != null)
+                armor = target.armor.protection;
 
             damage -= armor;
             target.hp -= damage;
@@ -82,10 +84,10 @@ namespace LegendsOfAntir
             if (target.hp > 0)
                 return;
 
-            switch(target)
+            switch (target)
             {
                 case Player p:
-                    //TODO send event about death!!!
+                    _game.player.TriggerDeath();
                     break;
 
                 case NPC n:
@@ -98,10 +100,52 @@ namespace LegendsOfAntir
             }
         }
 
+        public bool Flee()
+        {
+            int mod = this.attributes[Attribute.Smarts];
+            int result = SkillCheck(mod);
+
+            if (result < _game.lowerDifficulty)
+            {
+                Console.WriteLine(this.name + " fails to flee.");
+                return false;
+            }
+            else if (result < _game.higherDifficulty && result > _game.lowerDifficulty)
+            {
+                NPC attacker = null;
+
+                foreach (var entry in _game.initiative)
+                {
+                    if (entry.Key is NPC)
+                    {
+                        NPC npc = (NPC)entry.Key;
+
+                        if (npc.status == CharacterStatus.Hostile)
+                        {
+                            attacker = npc;
+                            break;
+                        }
+                    }
+                }
+
+                Console.WriteLine(this.name + " attempts to flee, but " + attacker.name + " manages to hit them first.");
+                attacker.Attack(this);
+            }
+
+            Random random = new Random();
+            Direction direction = (Direction)random.Next(0, this.currentRoom.exits.Count);
+
+            Console.WriteLine(this.name + " manages to flee to the " + direction);
+
+            this.Move(direction);
+
+            return true;
+        }
+
         public void ShowInventory()
         {
             Console.WriteLine("You have the following items in your inventory: ");
-            foreach(Item item in this.inventory)
+            foreach (Item item in this.inventory)
             {
                 item.Show();
             }
@@ -111,7 +155,7 @@ namespace LegendsOfAntir
         {
             Item dropItem = null;
 
-            foreach(Item item in this.inventory)
+            foreach (Item item in this.inventory)
             {
                 if (item.name.Equals(name))
                     dropItem = item;
@@ -133,7 +177,7 @@ namespace LegendsOfAntir
         {
             Item pickItem = null;
 
-            foreach(Item item in this.currentRoom.items)
+            foreach (Item item in this.currentRoom.items)
             {
                 if (item.name.Equals(name))
                     pickItem = item;
@@ -154,7 +198,7 @@ namespace LegendsOfAntir
         {
             Item useItem = null;
 
-            foreach(Item item in this.inventory)
+            foreach (Item item in this.inventory)
             {
                 if (item.name.Equals(name))
                     useItem = item;

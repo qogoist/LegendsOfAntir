@@ -6,7 +6,10 @@ namespace LegendsOfAntir
 {
     class Player : Character
     {
-        public Player(){}
+        public delegate void Death();
+        public event Death deathEvent;
+
+        public Player() { }
 
         public override void Move(Direction direction)
         {
@@ -15,7 +18,7 @@ namespace LegendsOfAntir
 
             foreach (NPC npc in _game.characters)
             {
-                Direction npcDirection = Direction.north;
+                Direction npcDirection = Direction.North;
                 if (npc.home == null)
                 {
                     Random random = new Random();
@@ -80,46 +83,17 @@ namespace LegendsOfAntir
                     dialogue = answer.destination;
 
                 }
-                catch(System.Exception)
+                catch (System.Exception)
                 {
                     Console.WriteLine("The choice you picked wasn't valid, please try again.");
                 }
             }
 
         }
-
-        public void Flee()
+    
+        public void TriggerDeath()
         {
-            int mod = this.attributes[Attribute.Smarts];
-            int result = SkillCheck(mod);
-
-            if (result < _game.lowerDifficulty)
-            {
-                Console.WriteLine("You fail to flee.");
-                return;
-            }
-            else if (result < _game.higherDifficulty && result > _game.lowerDifficulty)
-            {
-                NPC attacker = null;
-
-                foreach (NPC character in _game.initiative)
-                {
-                    if (character.status == CharacterStatus.Hostile)
-                    {
-                        attacker = character;
-                        break;
-                    }
-                }
-
-                attacker.Attack(this);
-            }
-
-            Random random = new Random();
-            Direction direction = (Direction)random.Next(0, this.currentRoom.exits.Count);
-
-            Console.WriteLine("You manage to flee to the " + direction);
-
-            this.Move(direction);
+            deathEvent();
         }
     }
 }
