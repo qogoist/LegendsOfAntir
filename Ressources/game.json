@@ -5,28 +5,28 @@
       "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
       "name": "mace",
       "damage": 3,
-      "attribute": "Brawn"
+      "UsedAttribute": "Brawn"
     },
     {
       "$id": "1001",
       "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
       "name": "dagger",
       "damage": 1,
-      "attribute": "Agility"
+      "UsedAttribute": "Agility"
     },
     {
       "$id": "1002",
       "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
       "name": "sword",
       "damage": 2,
-      "attribute": "Brawn"
+      "UsedAttribute": "Brawn"
     },
     {
       "$id": "1003",
       "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
       "name": "Bow",
       "damage": 2,
-      "attribute": "Agility"
+      "UsedAttribute": "Agility"
     },
     {
       "$id": "1004",
@@ -61,7 +61,7 @@
       "$type": "LegendsOfAntir.Weapon, LegendsOfAntir",
       "name": "wand",
       "damage": 5,
-      "attribute": "Smarts"
+      "UsedAttribute": "Smarts"
     }
   ],
   "player": {

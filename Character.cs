@@ -136,12 +136,7 @@ namespace LegendsOfAntir
                 attacker.Attack(this);
             }
 
-            Random random = new Random();
-            Direction direction;
-            do
-            {
-                direction = (Direction)random.Next(0, this.CurrentRoom.Exits.Count);
-            } while (!this.CurrentRoom.Exits.ContainsKey(direction));
+            Direction direction = GetRandomDirection();
 
             Console.WriteLine(this.Name + " manages to flee to the " + direction);
 
@@ -184,7 +179,7 @@ namespace LegendsOfAntir
         public void TakeItem(String name)
         {
             Item pickItem = null;
-            
+
             foreach (Item item in this.CurrentRoom.Items)
             {
                 if (item.Name.Equals(name))
@@ -281,6 +276,18 @@ namespace LegendsOfAntir
             }
 
             return returnItem;
+        }
+
+        public Direction GetRandomDirection()
+        {
+            Random random = new Random();
+            Direction direction;
+            do
+            {
+                direction = (Direction)random.Next(0, 4);
+            } while (!this.CurrentRoom.Exits.ContainsKey(direction));
+
+            return direction;
         }
     }
 }

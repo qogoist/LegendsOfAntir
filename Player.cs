@@ -21,11 +21,7 @@ namespace LegendsOfAntir
                 Direction npcDirection = Direction.North;
                 if (npc.Home == null)
                 {
-                    Random random = new Random();
-                    do
-                    {
-                        npcDirection = (Direction)random.Next(0, 4);
-                    } while (!npc.CurrentRoom.Exits.ContainsKey(npcDirection));
+                    npcDirection = npc.GetRandomDirection();
 
                     npc.Move(npcDirection);
                 }

@@ -114,7 +114,7 @@ namespace LegendsOfAntir
             {
                 try
                 {
-                    Console.WriteLine("It is your turn in combat, what do you do?");
+                    Console.WriteLine("It is your turn in combat, you have " + Player.Hp + " health remaining, what do you do?");
                     Console.WriteLine("1. Attack [target].");
                     Console.WriteLine("2. Flee.");
 
